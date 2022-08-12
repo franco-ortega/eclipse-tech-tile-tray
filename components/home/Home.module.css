@@ -1,3 +1,25 @@
 .Home {
+  width: fit-content;
+  margin-inline: auto;
   color: yellow;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.Home button,
+.Home select {
+  background-color: white;
+  border: 5px solid rgb(75, 133, 181);
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.Home button {
+  padding: 0.25rem 0.5rem;
+}
+
+.Home select {
+  text-align: center;
 }
