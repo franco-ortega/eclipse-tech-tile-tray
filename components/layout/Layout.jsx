@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Header from '../header/Header';
 import styles from './Layout.module.css';
 
 const Layout = ({ children }) => {
@@ -8,9 +9,7 @@ const Layout = ({ children }) => {
         <title>Eclipse: Tech Tile Tray</title>
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
-      <header>
-        <h1>Eclipse</h1>
-      </header>
+      <Header />
       <main>{children}</main>
     </div>
   );

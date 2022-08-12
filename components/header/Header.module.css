@@ -1,0 +1,20 @@
+.Header {
+  width: fit-content;
+  margin-inline: auto;
+  padding-block: 2rem;
+
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+
+  color: #fffef6;
+  font-size: 2rem;
+  font-weight: 500;
+
+  /* overflow: auto; */
+  /* outline: 3px dashed yellow; */
+}
+
+.Header div:nth-child(4) {
+  transform: scale(70%, 110%) skew(-10deg, 85deg);
+}
