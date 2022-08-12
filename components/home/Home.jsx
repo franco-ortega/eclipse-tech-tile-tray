@@ -3,18 +3,23 @@ import styles from './Home.module.css';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
+  const [game, setGame] = useState(null);
 
   useEffect(async () => {
-    await fetch('http://localhost:3000/api/trays')
-      .then((res) => res.json())
-      .then((res) => setTrays(res));
+    const response = await fetch('http://localhost:3000/api/trays').then(
+      (res) => res.json()
+    );
+
+    setTrays(response);
   }, []);
 
   const onSelectGame = async (e) => {
     console.log('selected: ', e.target.value);
-    await fetch(`http://localhost:3000/api/trays/?id=${e.target.value}`)
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    const response = await fetch(
+      `http://localhost:3000/api/trays/?id=${e.target.value}`
+    ).then((res) => res.json());
+
+    setGame(response);
   };
 
   return (
