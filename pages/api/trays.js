@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb';
 import clientPromise from '../../lib/mongodb';
 
 export default async function handler(req, res) {
@@ -9,9 +10,18 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'GET':
-      const raw = await db.collection('trays').find({}).toArray();
-      const data = await JSON.parse(JSON.stringify(raw));
-      res.json(data);
+      if (req.body.id) {
+        // get one tray if the body has an id
+        const query = { _id: ObjectId(req.body.id) };
+        const raw = await db.collection('trays').find(query);
+        const data = await JSON.parse(JSON.stringify(raw));
+        res.json(data);
+      } else if (!req.body) {
+        // get all trays if the body is empty
+        const raw = await db.collection('trays').find({}).toArray();
+        const data = await JSON.parse(JSON.stringify(raw));
+        res.json(data);
+      }
       break;
     case 'POST':
       const response = await db.collection('trays').insertOne(req.body);
