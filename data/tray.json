@@ -1,0 +1,385 @@
+{
+  "name": "",
+  "date": "",
+  "rows": {
+    "military": {
+      "row": 1,
+      "length": 8,
+      "color": "#AE2F84",
+      "tiles": [
+        {
+          "position": 1,
+          "title": "Neutron Bombs",
+          "description:": "",
+          "cost": { "max": 2, "min": 2 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 2,
+          "title": "Starbase",
+          "description:": "",
+          "cost": { "max": 4, "min": 3 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 3,
+          "title": "Plasma Cannon",
+          "description:": "",
+          "cost": { "max": 6, "min": 4 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 4,
+          "title": "Phase Shield",
+          "description:": "",
+          "cost": { "max": 8, "min": 5 },
+          "limit": 4,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 5,
+          "title": "Advanced Mining",
+          "description:": "",
+          "cost": { "max": 10, "min": 6 },
+          "limit": 4,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 6,
+          "title": "Tachyon Source",
+          "description:": "",
+          "cost": { "max": 12, "min": 6 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 7,
+          "title": "Gluon Computer",
+          "description:": "",
+          "cost": { "max": 14, "min": 7 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 8,
+          "title": "Plamsa Missile",
+          "description:": "",
+          "cost": { "max": 16, "min": 8 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        }
+      ]
+    },
+    "grid": {
+      "row": 2,
+      "length": 8,
+      "color": "#407E41",
+      "tiles": [
+        {
+          "position": 1,
+          "title": "Gauss Shield",
+          "description:": "",
+          "cost": { "max": 2, "min": 2 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 2,
+          "title": "Fusion Square",
+          "description:": "",
+          "cost": { "max": 4, "min": 3 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 3,
+          "title": "Improved Hull",
+          "description:": "",
+          "cost": { "max": 6, "min": 4 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 4,
+          "title": "Positron Computer",
+          "description:": "",
+          "cost": { "max": 8, "min": 5 },
+          "limit": 4,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 5,
+          "title": "Advanced Economy",
+          "description:": "",
+          "cost": { "max": 10, "min": 6 },
+          "limit": 4,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 6,
+          "title": "Tachyon Drive",
+          "description:": "",
+          "cost": { "max": 12, "min": 6 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 7,
+          "title": "Antimatter Cannon",
+          "description:": "",
+          "cost": { "max": 14, "min": 7 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 8,
+          "title": "Quantum Grid",
+          "description:": "",
+          "cost": { "max": 16, "min": 8 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        }
+      ]
+    },
+    "nano": {
+      "row": 3,
+      "length": 8,
+      "color": "#BC9E1F",
+      "tiles": [
+        {
+          "position": 1,
+          "title": "Nanorobots",
+          "description:": "",
+          "cost": { "max": 2, "min": 2 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 2,
+          "title": "Fusion Drive",
+          "description:": "",
+          "cost": { "max": 4, "min": 3 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 3,
+          "title": "Orbital",
+          "description:": "",
+          "cost": { "max": 6, "min": 4 },
+          "limit": 5,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 4,
+          "title": "Advanced Robotics",
+          "description:": "",
+          "cost": { "max": 8, "min": 5 },
+          "limit": 4,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 5,
+          "title": "Advanced Labs",
+          "description:": "",
+          "cost": { "max": 10, "min": 6 },
+          "limit": 4,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 6,
+          "title": "Monolith",
+          "description:": "",
+          "cost": { "max": 12, "min": 6 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 7,
+          "title": "Wormhole Generator",
+          "description:": "",
+          "cost": { "max": 14, "min": 7 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": 8,
+          "title": "Artifact Key",
+          "description:": "",
+          "cost": { "max": 16, "min": 8 },
+          "limit": 3,
+          "selected": 0,
+          "used": 0
+        }
+      ]
+    },
+    "rare": {
+      "row": 4,
+      "length": 7,
+      "color": "#3B331A",
+      "tiles": [
+        {
+          "position": null,
+          "title": "Antimatter Splitter",
+          "description:": "",
+          "cost": { "max": 5, "min": 5 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Conifold Field",
+          "description:": "",
+          "cost": { "max": 5, "min": 5 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Neutron Absorber",
+          "description:": "",
+          "cost": { "max": 5, "min": 5 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Absorption Shield",
+          "description:": "",
+          "cost": { "max": 7, "min": 6 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Cloaking Device",
+          "description:": "",
+          "cost": { "max": 7, "min": 6 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Improved Logistics",
+          "description:": "",
+          "cost": { "max": 7, "min": 6 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Sentient Hull",
+          "description:": "",
+          "cost": { "max": 7, "min": 6 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Soliton Canon",
+          "description:": "",
+          "cost": { "max": 9, "min": 7 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Transition Drive",
+          "description:": "",
+          "cost": { "max": 9, "min": 7 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Warp Portal",
+          "description:": "",
+          "cost": { "max": 9, "min": 7 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Flux Missile",
+          "description:": "",
+          "cost": { "max": 11, "min": 8 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Pico Modulator",
+          "description:": "",
+          "cost": { "max": 11, "min": 8 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Ancient Labs",
+          "description:": "",
+          "cost": { "max": 13, "min": 9 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Zero Point Source",
+          "description:": "",
+          "cost": { "max": 15, "min": 10 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        },
+        {
+          "position": null,
+          "title": "Meta-synthesis",
+          "description:": "",
+          "cost": { "max": 17, "min": 11 },
+          "limit": 1,
+          "selected": 0,
+          "used": 0
+        }
+      ]
+    }
+  }
+}
