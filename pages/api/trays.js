@@ -10,10 +10,10 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'GET':
-      if (req.body.id) {
-        // get one tray if the body has an id
-        const query = { _id: ObjectId(req.body.id) };
-        const raw = await db.collection('trays').find(query);
+      if (req.query.id) {
+        // get one tray if the query has an id
+        const query = { _id: ObjectId(req.query.id) };
+        const raw = await db.collection('trays').findOne(query);
         const data = await JSON.parse(JSON.stringify(raw));
         res.json(data);
       } else if (!req.body) {
