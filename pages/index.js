@@ -1,7 +1,8 @@
+import Home from '../components/home/Home';
 import clientPromise from '../lib/mongodb';
 
-export default function Home({ isConnected }) {
-  return <div>Landing Page</div>;
+export default function HomePage({ isConnected }) {
+  return <Home />;
 }
 
 export async function getServerSideProps(context) {
