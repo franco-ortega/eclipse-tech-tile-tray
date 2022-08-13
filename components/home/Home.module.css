@@ -1,7 +1,10 @@
+.Home {
+  padding-top: 4rem;
+}
+
 .Home section {
   width: fit-content;
   margin-inline: auto;
-  padding-block: 1rem;
   display: flex;
   flex-direction: row;
   gap: 2rem;
