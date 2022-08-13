@@ -3,10 +3,13 @@ const { NEXT_PUBLIC_API_URL } = process.env;
 import Tray from '../tray/Tray';
 import tray from '../../data/tray.json';
 import styles from './Home.module.css';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
   const [game, setGame] = useState(null);
+  const router = useRouter();
 
   useEffect(async () => {
     const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
@@ -18,7 +21,7 @@ const Home = () => {
 
   const onNewGameClick = () => {
     console.log('new game!!');
-    alert("This isn't working yet.");
+    router.push('/new-game');
   };
 
   const onSelectGame = async (e) => {
