@@ -1,10 +1,11 @@
 import Home from '../components/home/Home';
+import Select from '../components/select/Select';
 import clientPromise from '../lib/mongodb';
 
 export default function NewGame({ isConnected }) {
   return (
     <div>
-      <h2>New Game</h2>
+      <Select />
     </div>
   );
 }
