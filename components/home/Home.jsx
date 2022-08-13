@@ -4,7 +4,7 @@ import Tray from '../tray/Tray';
 import tray from '../../data/tray.json';
 import styles from './Home.module.css';
 
-const Home = ({ data }) => {
+const Home = () => {
   const [trays, setTrays] = useState([]);
   const [game, setGame] = useState(null);
 
@@ -33,8 +33,6 @@ const Home = ({ data }) => {
       `You have selected ${response.name}. Still working on displaying this info.`
     );
   };
-
-  console.log(data);
 
   return (
     <div className={styles.Home}>
