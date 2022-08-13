@@ -10,7 +10,7 @@
   justify-content: space-between;
 
   font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem;
+  font-size: 1.25rem;
 }
 
 .Tile div:nth-child(1) {
@@ -18,11 +18,14 @@
   border-radius: 2rem;
   width: 100%;
   padding: 0.25rem;
+
   color: whitesmoke;
+  font-size: 0.85rem;
 }
 
 .Tile div + div {
   width: 100%;
+  margin-left: 0.1rem;
   padding: 0.25rem;
 
   position: relative;
