@@ -7,8 +7,8 @@
   gap: 2rem;
 }
 
-.Home button,
-.Home select {
+.Home section button,
+.Home section select {
   background-color: white;
   border: 5px solid rgb(75, 133, 181);
   border-radius: 0.25rem;
@@ -16,10 +16,10 @@
   font-weight: bold;
 }
 
-.Home button {
+.Home section button {
   padding: 0.25rem 0.5rem;
 }
 
-.Home select {
+.Home section select {
   text-align: center;
 }
