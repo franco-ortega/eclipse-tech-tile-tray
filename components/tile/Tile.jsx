@@ -8,7 +8,7 @@ const Tile = ({ active, color, tile }) => {
     <button
       style={{ backgroundColor: color }}
       className={styles.Tile}
-      disabled={tile.limit - tile.selected}
+      disabled={!active && tile.limit - tile.selected}
       onClick={onTileClick}
     >
       <div>{tile.title}</div>x{tile.limit - tile.selected}
