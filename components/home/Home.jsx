@@ -4,16 +4,16 @@ import Tray from '../tray/Tray';
 import tray from '../../data/tray.json';
 import styles from './Home.module.css';
 
-const Home = () => {
+const Home = ({ data }) => {
   const [trays, setTrays] = useState([]);
   const [game, setGame] = useState(null);
 
   useEffect(async () => {
-    const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
-      (res) => res.json()
-    );
+    // const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
+    //   (res) => res.json()
+    // );
 
-    setTrays(response);
+    setTrays(data);
   }, []);
 
   const onNewGameClick = () => {

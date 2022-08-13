@@ -2,7 +2,7 @@ import Home from '../components/home/Home';
 import clientPromise from '../lib/mongodb';
 
 export default function HomePage({ isConnected }) {
-  return <Home />;
+  return <Home data={data} />;
 }
 
 export async function getServerSideProps(context) {
@@ -11,14 +11,18 @@ export async function getServerSideProps(context) {
     // `await clientPromise` will use the default database passed in the MONGODB_URI
     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
     //
-    // `const client = await clientPromise`
-    // `const db = client.db("myDatabase")`
+    const client = await clientPromise;
+    const db = client.db('eclipseDB');
     //
     // Then you can execute queries against your database like so:
     // db.find({}) or any of the MongoDB Node Driver commands
 
+    const raw = await db.collection('trays').find({}).toArray();
+
+    const data = await JSON.parse(JSON.stringify(raw));
+
     return {
-      props: { isConnected: true }
+      props: { isConnected: true, data }
     };
   } catch (e) {
     console.error(e);
