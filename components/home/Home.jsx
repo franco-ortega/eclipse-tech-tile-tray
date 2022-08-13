@@ -3,10 +3,12 @@ const { NEXT_PUBLIC_API_URL } = process.env;
 import { useRouter } from 'next/router';
 import trayData from '../../data/tray.json';
 import styles from './Home.module.css';
+import { useTrayContext } from '../../context/trayContext';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
   const [game, setGame] = useState(null);
+  const { setActiveTray } = useTrayContext();
   const router = useRouter();
 
   useEffect(async () => {
@@ -31,7 +33,7 @@ const Home = () => {
       })
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => setActiveTray(res.insertedId));
     router.push('/new-game');
   };
 
