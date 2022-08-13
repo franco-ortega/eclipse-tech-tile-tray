@@ -2,7 +2,6 @@
   width: fit-content;
   margin-inline: auto;
   padding-block: 1rem;
-  color: yellow;
   display: flex;
   flex-direction: row;
   gap: 2rem;
