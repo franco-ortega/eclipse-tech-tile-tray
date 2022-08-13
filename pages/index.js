@@ -1,7 +1,7 @@
 import Home from '../components/home/Home';
 import clientPromise from '../lib/mongodb';
 
-export default function HomePage({ isConnected }) {
+export default function HomePage({ isConnected, data }) {
   return <Home data={data} />;
 }
 
