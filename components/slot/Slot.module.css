@@ -1,0 +1,12 @@
+.Slot {
+  background-color: gray;
+  height: 8rem;
+  width: 8rem;
+
+  border-top: 2px solid black;
+  border-radius: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

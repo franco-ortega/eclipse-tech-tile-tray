@@ -9,7 +9,7 @@ const Tray = ({ active, name, rows }) => {
   // rows will render tiles
   // tiles buttons will be disabled based on "active" prop
 
-  console.log(rows);
+  // console.log(rows);
   return (
     <div className={styles.Tray}>
       {name ? { name } : 'Display'}

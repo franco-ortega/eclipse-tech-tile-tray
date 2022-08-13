@@ -24,6 +24,8 @@ const Home = () => {
     setGame(response);
   };
 
+  console.log(tray.rows);
+
   return (
     <div className={styles.Home}>
       <section>
