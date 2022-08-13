@@ -9,11 +9,11 @@ const Home = ({ data }) => {
   const [game, setGame] = useState(null);
 
   useEffect(async () => {
-    // const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
-    //   (res) => res.json()
-    // );
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
+      (res) => res.json()
+    );
 
-    setTrays(data);
+    await setTrays(response);
   }, []);
 
   const onNewGameClick = () => {
@@ -33,6 +33,8 @@ const Home = ({ data }) => {
       `You have selected ${response.name}. Still working on displaying this info.`
     );
   };
+
+  console.log(data);
 
   return (
     <div className={styles.Home}>
