@@ -1,6 +1,8 @@
 .Row {
   background-color: darkslategray;
+  padding: 0.5rem;
   width: fit-content;
+  margin-inline: auto;
   list-style: none;
 
   display: flex;
