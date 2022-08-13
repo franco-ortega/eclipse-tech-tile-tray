@@ -1,8 +1,21 @@
-.Tile button {
-  background-color: purple;
+.Tile {
+  border: none;
+  border-radius: 1rem;
+  width: 90%;
+  height: 90%;
 
-  /* width: 75%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  color: black;
-  font-size: 0.75rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+}
+
+.Tile div {
+  background-color: black;
+  border-radius: 2rem;
+  width: 100%;
+  padding: 0.25rem;
+  color: whitesmoke;
 }

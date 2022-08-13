@@ -5,15 +5,13 @@ const Tile = ({ active, color, tile }) => {
     console.log('Tile clicked!');
   };
   return (
-    // <div className={styles.Tile}>
     <button
       style={{ backgroundColor: color }}
       className={styles.Tile}
       onClick={onTileClick}
     >
-      {tile?.title}
+      <div>{tile?.title}</div>
     </button>
-    // </div>
   );
 };
 

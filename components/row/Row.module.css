@@ -5,10 +5,8 @@
 
   display: flex;
   flex-direction: row;
-
-  color: whitesmoke;
 }
 
 .Row li {
-  /* border: 1px solid gray; */
+  border: none;
 }
