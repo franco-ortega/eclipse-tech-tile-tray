@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+const { NEXT_PUBLIC_API_URL } = process.env;
 import Tray from '../tray/Tray';
 import tray from '../../data/tray.json';
 import styles from './Home.module.css';
@@ -8,7 +9,7 @@ const Home = () => {
   const [game, setGame] = useState(null);
 
   useEffect(async () => {
-    const response = await fetch('http://localhost:3000/api/trays').then(
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
       (res) => res.json()
     );
 
@@ -23,7 +24,7 @@ const Home = () => {
   const onSelectGame = async (e) => {
     console.log('selected: ', e.target.value);
     const response = await fetch(
-      `http://localhost:3000/api/trays/?id=${e.target.value}`
+      `${NEXT_PUBLIC_API_URL}/api/trays/?id=${e.target.value}`
     ).then((res) => res.json());
 
     setGame(response);
