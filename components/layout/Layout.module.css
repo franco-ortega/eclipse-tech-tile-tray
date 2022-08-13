@@ -1,4 +1,4 @@
 .Layout {
   background-color: #1c1f2d;
-  width: fit-content;
+  min-width: fit-content;
 }
