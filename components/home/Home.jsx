@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 const { NEXT_PUBLIC_API_URL } = process.env;
-import styles from './Home.module.css';
 import { useRouter } from 'next/router';
+import trayData from '../../data/tray.json';
+import styles from './Home.module.css';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
@@ -16,8 +17,19 @@ const Home = () => {
     await setTrays(response);
   }, []);
 
-  const onNewGameClick = () => {
+  const onNewGameClick = async () => {
     console.log('new game!!');
+    await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/josn'
+      },
+      body: JSON.stringify({
+        ...trayData,
+        name: `Tray #${trays.length + 1}`,
+        date: new Date()
+      })
+    });
     router.push('/new-game');
   };
 
