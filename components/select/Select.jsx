@@ -18,7 +18,8 @@ const Select = () => {
 
   return (
     <div className={styles.Select}>
-      <h3>Click on tiles to add them to your tray.</h3>
+      <h3>{game.name}</h3>
+      <p>Click on tiles to add them to your tray.</p>
       {game && <Tray active={false} name={game.name} rows={game.rows} />}
     </div>
   );

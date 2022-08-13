@@ -4,7 +4,9 @@
   color: hsl(0, 0%, 90%);
 }
 
-.Select h3 {
+.Select h3,
+.Select h3 + p {
   width: fit-content;
   margin-inline: auto;
+  margin-bottom: 0.5rem;
 }
