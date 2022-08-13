@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Tray from '../tray/Tray';
+import tray from '../../data/tray.json';
 import styles from './Home.module.css';
 
 const Home = () => {
@@ -24,16 +26,19 @@ const Home = () => {
 
   return (
     <div className={styles.Home}>
-      <button>New Game</button>
-      <select name='trays' id='trays' onChange={onSelectGame}>
-        <option value=''>Select Game</option>
-        {trays &&
-          trays.map((tray) => (
-            <option key={tray._id} value={tray._id}>
-              {tray.name}
-            </option>
-          ))}
-      </select>
+      <section>
+        <button>New Game</button>
+        <select name='trays' id='trays' onChange={onSelectGame}>
+          <option value=''>Select Game</option>
+          {trays &&
+            trays.map((tray) => (
+              <option key={tray._id} value={tray._id}>
+                {tray.name}
+              </option>
+            ))}
+        </select>
+      </section>
+      <Tray active={false} rows={tray.rows} />
     </div>
   );
 };
