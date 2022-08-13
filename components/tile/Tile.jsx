@@ -10,7 +10,11 @@ const Tile = ({ active, color, tile }) => {
       className={styles.Tile}
       onClick={onTileClick}
     >
-      <div>{tile?.title}</div>
+      <div>{tile.title}</div>
+      <div>
+        <p>{tile.cost.max}</p>
+        <p>{tile.cost.min}</p>
+      </div>
     </button>
   );
 };
