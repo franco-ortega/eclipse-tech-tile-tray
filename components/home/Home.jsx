@@ -29,7 +29,9 @@ const Home = () => {
         name: `Tray #${trays.length + 1}`,
         date: new Date()
       })
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
     router.push('/new-game');
   };
 
