@@ -10,19 +10,27 @@ const Tray = ({ active, name, rows }) => {
   // tiles buttons will be disabled based on "active" prop
 
   // console.log(rows);
+
+  const secondRareTiles = rows.rare.tiles.slice(7, 14);
+  const secondRareRow = {
+    ...rows.rare,
+    tiles: secondRareTiles
+  };
+
+  const thirdRareTiles = rows.rare.tiles.slice(14);
+  const thirdRareRow = {
+    ...rows.rare,
+    tiles: thirdRareTiles
+  };
+
   return (
     <div className={styles.Tray}>
-      {name ? { name } : 'Display'}
       <Row active={active} tech={rows.military} />
-      <div>Row 2</div>
-      <div>Row 3</div>
-      <div>Row 4</div>
-      {!active && (
-        <>
-          <div>Row 5</div>
-          <div>Row 6</div>
-        </>
-      )}
+      <Row active={active} tech={rows.grid} />
+      <Row active={active} tech={rows.nano} />
+      <Row active={active} tech={rows.rare} />
+      {!active && <Row active={active} tech={secondRareRow} />}
+      {!active && <Row active={active} tech={thirdRareRow} />}
     </div>
   );
 };

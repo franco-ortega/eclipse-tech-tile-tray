@@ -24,7 +24,7 @@ const Row = ({ active, tech }) => {
             key={slot}
             active={active}
             // tile={tech.tiles[(slot + 1) * 2] && tech.tiles[(slot + 1) * 2]}
-            tile={findTile(slot + 1, tech.tiles)}
+            tile={findTile(slot + 1, tech.tiles) || tech.tiles[slot]}
           />
         ))}
     </ul>

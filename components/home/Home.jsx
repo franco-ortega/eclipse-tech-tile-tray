@@ -24,7 +24,7 @@ const Home = () => {
     setGame(response);
   };
 
-  console.log(tray.rows);
+  console.log(tray.rows.rare);
 
   return (
     <div className={styles.Home}>
