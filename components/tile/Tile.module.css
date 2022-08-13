@@ -1,0 +1,66 @@
+.Tile {
+  border: none;
+  border-radius: 1rem;
+  width: 90%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  color: hsl(350, 100%, 88%);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+}
+
+.Tile:disabled {
+  opacity: 50%;
+}
+
+.Tile div:nth-child(1) {
+  background-color: black;
+  border-radius: 2rem;
+  width: 100%;
+  padding: 0.25rem;
+
+  color: whitesmoke;
+  font-size: 0.85rem;
+}
+
+.Tile div + div {
+  width: 100%;
+  margin-left: 0.1rem;
+  padding: 0.25rem;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.Tile p {
+  background-color: hsl(0, 0%, 75%);
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 1.5rem;
+}
+
+.Tile p + p {
+  height: 1.75rem;
+  width: 1.75rem;
+
+  position: absolute;
+  left: 30%;
+
+  color: black;
+  font-size: 1rem;
+}
