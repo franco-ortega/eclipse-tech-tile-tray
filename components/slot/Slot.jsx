@@ -1,10 +1,9 @@
+import Tile from '../tile/Tile';
 import styles from './Slot.module.css';
 
 const Slot = ({ active, tile }) => {
   return (
-    <li className={styles.Slot}>
-      {!active && <div>{tile && tile.title}</div>}
-    </li>
+    <li className={styles.Slot}>{!active && tile && <Tile tile={tile} />}</li>
   );
 };
 
