@@ -38,7 +38,7 @@ const Home = () => {
             ))}
         </select>
       </section>
-      <Tray active={false} rows={tray.rows} />
+      <Tray active={false} name={tray.name} rows={tray.rows} />
     </div>
   );
 };
