@@ -15,6 +15,11 @@ const Home = () => {
     setTrays(response);
   }, []);
 
+  const onNewGameClick = () => {
+    console.log('new game!!');
+    alert("This isn't working yet.");
+  };
+
   const onSelectGame = async (e) => {
     console.log('selected: ', e.target.value);
     const response = await fetch(
@@ -22,14 +27,16 @@ const Home = () => {
     ).then((res) => res.json());
 
     setGame(response);
-  };
 
-  console.log(tray.rows.rare);
+    alert(
+      `You have selected ${response.name}. Still working on displaying this info.`
+    );
+  };
 
   return (
     <div className={styles.Home}>
       <section>
-        <button>New Game</button>
+        <button onClick={onNewGameClick}>New Game</button>
         <select name='trays' id='trays' onChange={onSelectGame}>
           <option value=''>Select Game</option>
           {trays &&

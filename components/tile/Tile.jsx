@@ -3,6 +3,7 @@ import styles from './Tile.module.css';
 const Tile = ({ active, color, tile }) => {
   const onTileClick = () => {
     console.log('Tile clicked!');
+    alert(`You have selected ${tile.title}`);
   };
   return (
     <button
