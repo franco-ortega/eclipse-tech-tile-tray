@@ -1,4 +1,5 @@
 .Layout {
   background-color: #1c1f2d;
   min-width: fit-content;
+  min-height: 100vh;
 }
