@@ -13,6 +13,10 @@
   font-size: 1.25rem;
 }
 
+.Tile:disabled {
+  opacity: 50%;
+}
+
 .Tile div:nth-child(1) {
   background-color: black;
   border-radius: 2rem;
