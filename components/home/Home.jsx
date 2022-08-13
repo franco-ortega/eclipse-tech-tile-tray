@@ -8,7 +8,7 @@ import { useTrayContext } from '../../context/trayContext';
 const Home = () => {
   const [trays, setTrays] = useState([]);
   const [game, setGame] = useState(null);
-  const { setActiveTray } = useTrayContext();
+  const { setActiveTrayId } = useTrayContext();
   const router = useRouter();
 
   useEffect(async () => {
@@ -33,7 +33,7 @@ const Home = () => {
       })
     })
       .then((res) => res.json())
-      .then((res) => setActiveTray(res.insertedId));
+      .then((res) => setActiveTrayId(res.insertedId));
     router.push('/new-game');
   };
 

@@ -1,26 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useTrayContext } from '../../context/trayContext';
-import trayData from '../../data/tray.json';
 const { NEXT_PUBLIC_API_URL } = process.env;
 import Tray from '../tray/Tray';
 import styles from './Select.module.css';
 
 const Select = () => {
-  const [game, setGame] = useState(null);
-  const { activeTray } = useTrayContext();
-  console.log(activeTray);
+  const [tray, setTray] = useState(null);
+  const { activeTrayId } = useTrayContext();
+  console.log(activeTrayId);
 
   useEffect(async () => {
-    await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${activeTray}`)
+    await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${activeTrayId}`)
       .then((res) => res.json())
-      .then((res) => setGame(res));
+      .then((res) => setTray(res));
   }, []);
 
   return (
     <div className={styles.Select}>
-      <h3>{game.name}</h3>
+      <h3>{tray && tray.name}</h3>
       <p>Click on tiles to add them to your tray.</p>
-      {game && <Tray active={false} name={game.name} rows={game.rows} />}
+      {tray && <Tray active={false} name={tray.name} rows={tray.rows} />}
     </div>
   );
 };
