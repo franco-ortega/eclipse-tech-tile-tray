@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 const { NEXT_PUBLIC_API_URL } = process.env;
-import Tray from '../tray/Tray';
-import tray from '../../data/tray.json';
+import { useRouter } from 'next/router';
+import trayData from '../../data/tray.json';
 import styles from './Home.module.css';
+import { useTrayContext } from '../../context/trayContext';
+import { setLocalStorage } from '../../utils/localStorage';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
   const [game, setGame] = useState(null);
+  const { setActiveTrayId } = useTrayContext();
+  const router = useRouter();
 
   useEffect(async () => {
     const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
@@ -16,9 +20,25 @@ const Home = () => {
     await setTrays(response);
   }, []);
 
-  const onNewGameClick = () => {
+  const onNewGameClick = async () => {
     console.log('new game!!');
-    alert("This isn't working yet.");
+    await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/josn'
+      },
+      body: JSON.stringify({
+        ...trayData,
+        name: `Tray #${trays.length + 1}`,
+        date: new Date()
+      })
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
+        setActiveTrayId(res.insertedId);
+      });
+    router.push('/new-game');
   };
 
   const onSelectGame = async (e) => {
@@ -48,7 +68,6 @@ const Home = () => {
             ))}
         </select>
       </section>
-      <Tray active={false} name={tray.name} rows={tray.rows} />
     </div>
   );
 };
