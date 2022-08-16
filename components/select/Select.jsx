@@ -8,20 +8,15 @@ import styles from './Select.module.css';
 const Select = () => {
   const [tray, setTray] = useState(null);
   const { activeTrayId } = useTrayContext();
-  console.log(activeTrayId);
 
   useEffect(async () => {
-    if (activeTrayId.length) {
-      await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${activeTrayId}`)
-        .then((res) => res.json())
-        .then((res) => setTray(res));
-    } else {
-      const id = getLocalStorage('ACTIVE_TRAY_ID');
+    const id = activeTrayId.length
+      ? activeTrayId
+      : getLocalStorage('ACTIVE_TRAY_ID');
 
-      await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${id}`)
-        .then((res) => res.json())
-        .then((res) => setTray(res));
-    }
+    await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${id}`)
+      .then((res) => res.json())
+      .then((res) => setTray(res));
   }, []);
 
   return (
