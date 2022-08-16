@@ -7,17 +7,21 @@ import styles from './Select.module.css';
 
 const Select = () => {
   const [tray, setTray] = useState(null);
-  const { activeTrayId } = useTrayContext();
+  const { activeTrayId, setActiveTrayId } = useTrayContext();
 
   useEffect(async () => {
     const id = activeTrayId.length
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
 
+    setActiveTrayId(id);
+
     await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${id}`)
       .then((res) => res.json())
       .then((res) => setTray(res));
   }, []);
+
+  console.log({ activeTrayId });
 
   return (
     <div className={styles.Select}>
