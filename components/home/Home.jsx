@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import trayData from '../../data/tray.json';
 import styles from './Home.module.css';
 import { useTrayContext } from '../../context/trayContext';
+import { setLocalStorage } from '../../utils/localStorage';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
@@ -33,7 +34,10 @@ const Home = () => {
       })
     })
       .then((res) => res.json())
-      .then((res) => setActiveTrayId(res.insertedId));
+      .then((res) => {
+        setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
+        setActiveTrayId(res.insertedId);
+      });
     router.push('/new-game');
   };
 
