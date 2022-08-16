@@ -14,14 +14,12 @@ const Select = () => {
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
 
-    setActiveTrayId(id);
+    if (!activeTrayId.length) setActiveTrayId(id);
 
     await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${id}`)
       .then((res) => res.json())
       .then((res) => setTray(res));
   }, []);
-
-  console.log({ activeTrayId });
 
   return (
     <div className={styles.Select}>
