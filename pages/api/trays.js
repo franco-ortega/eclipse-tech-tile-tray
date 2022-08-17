@@ -6,6 +6,8 @@ export default async function handler(req, res) {
 
   const db = client.db('eclipseDB');
 
+  // db.collection('trays').deleteMany({});
+
   switch (req.method) {
     case 'GET':
       if (req.query.id) {
@@ -26,17 +28,17 @@ export default async function handler(req, res) {
       res.json(response);
       break;
     case 'PUT':
-      console.log(req.body[1]);
       const update = await db
         .collection('trays')
-        .updateOne(
+        .findOneAndUpdate(
           { _id: ObjectId(req.query.id) },
-          { $set: req.body[0] },
-          req.body[1]
+          { $set: req.body.update },
+          {
+            returnDocument: 'after',
+            arrayFilters: [{ element: req.body.tile }]
+          }
         );
-
-      console.log(update);
-      res.json(update);
+      res.json(update.value);
       break;
     default:
       console.log('Method not available');

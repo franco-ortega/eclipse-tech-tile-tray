@@ -1,38 +1,34 @@
 import { useTrayContext } from '../../context/trayContext';
-import { getData, putData } from '../../services/request';
-import { getLocalStorage } from '../../utils/localStorage';
+import { putData } from '../../services/request';
+import { updatePosition } from '../../utils/updatePosition';
 import styles from './Tile.module.css';
 
 const Tile = ({ active, category, color, tile }) => {
-  const { activeTrayId, setTray } = useTrayContext();
+  const { tray, setTray } = useTrayContext();
 
   const onTileClick = async () => {
-    const id = activeTrayId.length
-      ? activeTrayId
-      : getLocalStorage('ACTIVE_TRAY_ID');
+    const selectedKey = `rows.${category}.tiles.$[element].selected`;
+    const positionKey = `rows.${category}.tiles.$[element].position`;
 
-    const index = tile.position ? tile.position - 1 : null;
+    const originalPosition = tile.position ? tile.position : null;
+    const tiles = tray.rows.rare.tiles;
+    const newPosition = updatePosition(originalPosition, tiles);
 
-    const selected = index
-      ? `rows.${category}.tiles.${index}.selected`
-      : `rows.${category}.tiles.$[element].selected`;
-
-    const update = index
-      ? [
-          {
-            [selected]: tile.selected + 1
+    const selectedUpdate = {
+      tile,
+      update: originalPosition
+        ? {
+            [selectedKey]: tile.selected + 1
           }
-        ]
-      : [
-          {
-            [selected]: tile.selected + 1
-          },
-          { arrayFilters: [{ element: tile }] }
-        ];
+        : {
+            [selectedKey]: tile.selected + 1,
+            [positionKey]: newPosition
+          }
+    };
 
-    await putData(`/api/trays?id=${id}`, update);
-
-    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
+    await putData(`/api/trays?id=${tray._id}`, selectedUpdate).then((res) =>
+      setTray(res)
+    );
   };
 
   return (
