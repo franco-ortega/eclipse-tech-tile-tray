@@ -4,12 +4,29 @@ import { getLocalStorage } from '../../utils/localStorage';
 import styles from './Tile.module.css';
 
 const Tile = ({ active, category, color, tile }) => {
-  const { activeTrayId, setTray } = useTrayContext();
+  const { activeTrayId, tray, setTray } = useTrayContext();
 
   const onTileClick = async () => {
+    console.log(tile.title);
     const id = activeTrayId.length
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
+
+    // let newPosition = 0;
+    // if (!tile.position) {
+    //   console.log('This tile has no position');
+
+    //   const total = tray.rows.rare.tiles.reduce((accumulated, current) => {
+    //     console.log(current);
+    //     if (current.position) accumulated = accumulated + 1;
+    //     return accumulated;
+    //   }, 0);
+
+    //   newPosition = total + 1;
+    //   console.log(newPosition);
+    // }
+
+    // const rarePosition = `rows.rare.tiles.$[element].position`;
 
     const index = tile.position ? tile.position - 1 : null;
 
@@ -26,6 +43,7 @@ const Tile = ({ active, category, color, tile }) => {
       : [
           {
             [selected]: tile.selected + 1
+            // [rarePosition]: newPosition
           },
           { arrayFilters: [{ element: tile }] }
         ];
