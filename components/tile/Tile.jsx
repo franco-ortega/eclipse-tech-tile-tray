@@ -3,7 +3,7 @@ import { getData, putData } from '../../services/request';
 import { getLocalStorage } from '../../utils/localStorage';
 import styles from './Tile.module.css';
 
-const Tile = ({ active, category, color, tile }) => {
+const Tile = ({ active, category, color, tile, setTray }) => {
   const { activeTrayId } = useTrayContext();
 
   const onTileClick = async () => {
@@ -23,6 +23,8 @@ const Tile = ({ active, category, color, tile }) => {
     };
 
     await putData(`/api/trays?id=${id}`, update);
+
+    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
   };
 
   return (
