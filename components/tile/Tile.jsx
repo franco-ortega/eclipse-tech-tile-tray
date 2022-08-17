@@ -1,28 +1,18 @@
 import { useTrayContext } from '../../context/trayContext';
 import { putData } from '../../services/request';
+import { updatePosition } from '../../utils/updatePosition';
 import styles from './Tile.module.css';
 
 const Tile = ({ active, category, color, tile }) => {
   const { tray, setTray } = useTrayContext();
 
   const onTileClick = async () => {
-    const originalPosition = tile.position ? tile.position : null;
-
     const selectedKey = `rows.${category}.tiles.$[element].selected`;
     const positionKey = `rows.${category}.tiles.$[element].position`;
 
-    let newPosition = 0;
-    if (!tile.position) {
-      console.log('This tile has no position');
-
-      const total = tray.rows.rare.tiles.reduce((accumulated, current) => {
-        if (current.position) accumulated = accumulated + 1;
-        return accumulated;
-      }, 0);
-
-      newPosition = total + 1;
-      console.log(newPosition);
-    }
+    const originalPosition = tile.position ? tile.position : null;
+    const tiles = tray.rows.rare.tiles;
+    const newPosition = updatePosition(originalPosition, tiles);
 
     const selectedUpdate = {
       tile,
