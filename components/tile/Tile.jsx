@@ -6,10 +6,10 @@ const Tile = ({ active, category, color, tile }) => {
   const { tray, setTray } = useTrayContext();
 
   const onTileClick = async () => {
-    const index = tile.position ? tile.position - 1 : null;
+    const originalPosition = tile.position ? tile.position : null;
 
-    const selected = `rows.${category}.tiles.$[element].selected`;
-    const position = `rows.${category}.tiles.$[element].position`;
+    const selectedKey = `rows.${category}.tiles.$[element].selected`;
+    const positionKey = `rows.${category}.tiles.$[element].position`;
 
     let newPosition = 0;
     if (!tile.position) {
@@ -24,19 +24,19 @@ const Tile = ({ active, category, color, tile }) => {
       console.log(newPosition);
     }
 
-    const update = {
+    const selectedUpdate = {
       tile,
-      update: index
+      update: originalPosition
         ? {
-            [selected]: tile.selected + 1
+            [selectedKey]: tile.selected + 1
           }
         : {
-            [selected]: tile.selected + 1,
-            [position]: newPosition
+            [selectedKey]: tile.selected + 1,
+            [positionKey]: newPosition
           }
     };
 
-    await putData(`/api/trays?id=${tray._id}`, update).then((res) =>
+    await putData(`/api/trays?id=${tray._id}`, selectedUpdate).then((res) =>
       setTray(res)
     );
   };
