@@ -7,7 +7,7 @@ import Tray from '../tray/Tray';
 import styles from './Select.module.css';
 
 const Select = () => {
-  const [tray, setTray] = useState(null);
+  const { tray, setTray } = useTrayContext();
   const { activeTrayId, setActiveTrayId } = useTrayContext();
 
   useEffect(async () => {
@@ -24,14 +24,7 @@ const Select = () => {
     <div className={styles.Select}>
       <h3>{tray && tray.name}</h3>
       <p>Click on tiles to add them to your tray.</p>
-      {tray && (
-        <Tray
-          active={false}
-          name={tray.name}
-          rows={tray.rows}
-          setTray={setTray}
-        />
-      )}
+      {tray && <Tray active={false} name={tray.name} rows={tray.rows} />}
     </div>
   );
 };

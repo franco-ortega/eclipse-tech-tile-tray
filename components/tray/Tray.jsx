@@ -1,7 +1,7 @@
 import Row from '../row/Row';
 import styles from './Tray.module.css';
 
-const Tray = ({ active, name, rows, setTray }) => {
+const Tray = ({ active, name, rows }) => {
   // tray will render rows
   // -- 3 regular rows
   // -- 1 special row
@@ -23,14 +23,12 @@ const Tray = ({ active, name, rows, setTray }) => {
 
   return (
     <div className={styles.Tray}>
-      <Row active={active} tech={rows.military} setTray={setTray} />
-      <Row active={active} tech={rows.grid} setTray={setTray} />
-      <Row active={active} tech={rows.nano} setTray={setTray} />
-      <Row active={active} tech={rows.rare} setTray={setTray} />
-      {!active && (
-        <Row active={active} tech={secondRareRow} setTray={setTray} />
-      )}
-      {!active && <Row active={active} tech={thirdRareRow} setTray={setTray} />}
+      <Row active={active} tech={rows.military} />
+      <Row active={active} tech={rows.grid} />
+      <Row active={active} tech={rows.nano} />
+      <Row active={active} tech={rows.rare} />
+      {!active && <Row active={active} tech={secondRareRow} />}
+      {!active && <Row active={active} tech={thirdRareRow} />}
     </div>
   );
 };

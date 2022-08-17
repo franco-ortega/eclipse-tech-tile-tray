@@ -3,8 +3,8 @@ import { getData, putData } from '../../services/request';
 import { getLocalStorage } from '../../utils/localStorage';
 import styles from './Tile.module.css';
 
-const Tile = ({ active, category, color, tile, setTray }) => {
-  const { activeTrayId } = useTrayContext();
+const Tile = ({ active, category, color, tile }) => {
+  const { activeTrayId, setTray } = useTrayContext();
 
   const onTileClick = async () => {
     const id = activeTrayId.length

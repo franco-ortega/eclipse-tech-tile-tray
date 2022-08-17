@@ -1,7 +1,7 @@
 import Slot from '../slot/Slot';
 import styles from './Row.module.css';
 
-const Row = ({ active, tech, setTray }) => {
+const Row = ({ active, tech }) => {
   const slots = [];
 
   for (let i = 0; i < tech.length; i++) {
@@ -23,7 +23,6 @@ const Row = ({ active, tech, setTray }) => {
             color={tech.color}
             // tile={tech.tiles[(slot + 1) * 2] && tech.tiles[(slot + 1) * 2]}
             tile={findTile(slot + 1, tech.tiles) || tech.tiles[slot]}
-            setTray={setTray}
           />
         ))}
     </ul>

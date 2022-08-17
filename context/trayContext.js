@@ -4,6 +4,7 @@ const TrayContext = createContext(null);
 
 export const TrayProvider = ({ children }) => {
   const [activeTrayId, setActiveTrayId] = useState([]);
+  const [tray, setTray] = useState(null);
 
   // const currentActiveTrayId = (id) => {
   //   setActiveTrayId(id);
@@ -11,14 +12,17 @@ export const TrayProvider = ({ children }) => {
   // };
 
   return (
-    <TrayContext.Provider value={{ activeTrayId, setActiveTrayId }}>
+    <TrayContext.Provider
+      value={{ activeTrayId, setActiveTrayId, tray, setTray }}
+    >
       {children}
     </TrayContext.Provider>
   );
 };
 
 export const useTrayContext = () => {
-  const { activeTrayId, setActiveTrayId } = useContext(TrayContext);
+  const { activeTrayId, setActiveTrayId, tray, setTray } =
+    useContext(TrayContext);
 
-  return { activeTrayId, setActiveTrayId };
+  return { activeTrayId, setActiveTrayId, tray, setTray };
 };
