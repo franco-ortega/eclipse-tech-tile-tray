@@ -24,9 +24,7 @@ export default async function handler(req, res) {
       }
       break;
     case 'POST':
-      const response = await db
-        .collection('trays')
-        .insertOne(JSON.parse(req.body));
+      const response = await db.collection('trays').insertOne(req.body);
       res.json(response);
       break;
     default:

@@ -5,6 +5,7 @@ import trayData from '../../data/tray.json';
 import styles from './Home.module.css';
 import { useTrayContext } from '../../context/trayContext';
 import { setLocalStorage } from '../../utils/localStorage';
+import { getData, postData } from '../../services/request';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
@@ -13,31 +14,20 @@ const Home = () => {
   const router = useRouter();
 
   useEffect(async () => {
-    const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`).then(
-      (res) => res.json()
-    );
+    const response = await getData('/api/trays');
 
     await setTrays(response);
   }, []);
 
   const onNewGameClick = async () => {
     console.log('new game!!');
-    await fetch(`${NEXT_PUBLIC_API_URL}/api/trays`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/josn'
-      },
-      body: JSON.stringify({
-        ...trayData,
-        name: `Tray #${trays.length + 1}`,
-        date: new Date()
-      })
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
-        setActiveTrayId(res.insertedId);
-      });
+
+    await postData('/api/trays', {
+      ...trayData,
+      name: `Tray #${trays.length + 1}`,
+      date: new Date()
+    });
+
     router.push('/new-game');
   };
 
