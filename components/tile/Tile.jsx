@@ -12,14 +12,25 @@ const Tile = ({ active, category, color, tile }) => {
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
 
-    const index = tile.position - 1;
-    const selected = `rows.${category}.tiles.${index}.selected`;
+    const index = tile.position ? tile.position - 1 : null;
+    const selected = index
+      ? `rows.${category}.tiles.${index}.selected`
+      : `rows.${category}.tiles.$[element].selected`;
 
     const value = tile.selected + 1;
 
-    const update = {
-      [selected]: value
-    };
+    const update = index
+      ? [
+          {
+            [selected]: value
+          }
+        ]
+      : [
+          {
+            [selected]: value
+          },
+          { arrayFilters: [{ element: tile }] }
+        ];
 
     await putData(`/api/trays?id=${id}`, update);
 
