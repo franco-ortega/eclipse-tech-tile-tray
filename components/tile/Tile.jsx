@@ -4,14 +4,12 @@ import { getLocalStorage } from '../../utils/localStorage';
 import styles from './Tile.module.css';
 
 const Tile = ({ active, category, color, tile }) => {
-  const { activeTrayId, setTray } = useTrayContext();
+  const { activeTrayId, tray, setTray } = useTrayContext();
 
   const onTileClick = async () => {
     const id = activeTrayId.length
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
-
-    const tray = await getData(`/api/trays/?id=${id}`);
 
     const index = tile.position - 1;
     const selected = `rows.${category}.tiles.${index}.selected`;
