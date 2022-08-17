@@ -3,6 +3,7 @@
   "date": "",
   "rows": {
     "military": {
+      "category": "military",
       "row": 1,
       "length": 8,
       "color": "#AE2F84",
@@ -82,6 +83,7 @@
       ]
     },
     "grid": {
+      "category": "grid",
       "row": 2,
       "length": 8,
       "color": "#407E41",
@@ -161,6 +163,7 @@
       ]
     },
     "nano": {
+      "category": "nano",
       "row": 3,
       "length": 8,
       "color": "#BC9E1F",
@@ -240,6 +243,7 @@
       ]
     },
     "rare": {
+      "category": "rare",
       "row": 4,
       "length": 7,
       "color": "hsl(0, 0%, 0%, 75%)",

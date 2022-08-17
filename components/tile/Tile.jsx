@@ -1,10 +1,40 @@
+import { useTrayContext } from '../../context/trayContext';
+import { getData, putData } from '../../services/request';
+import { getLocalStorage } from '../../utils/localStorage';
 import styles from './Tile.module.css';
 
-const Tile = ({ active, color, tile }) => {
-  const onTileClick = () => {
-    console.log('Tile clicked!');
-    alert(`You have selected ${tile.title}`);
+const Tile = ({ active, category, color, tile }) => {
+  const { activeTrayId, setTray } = useTrayContext();
+
+  const onTileClick = async () => {
+    const id = activeTrayId.length
+      ? activeTrayId
+      : getLocalStorage('ACTIVE_TRAY_ID');
+
+    const index = tile.position ? tile.position - 1 : null;
+
+    const selected = index
+      ? `rows.${category}.tiles.${index}.selected`
+      : `rows.${category}.tiles.$[element].selected`;
+
+    const update = index
+      ? [
+          {
+            [selected]: tile.selected + 1
+          }
+        ]
+      : [
+          {
+            [selected]: tile.selected + 1
+          },
+          { arrayFilters: [{ element: tile }] }
+        ];
+
+    await putData(`/api/trays?id=${id}`, update);
+
+    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
   };
+
   return (
     <button
       style={{ backgroundColor: color }}

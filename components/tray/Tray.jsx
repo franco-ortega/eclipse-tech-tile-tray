@@ -9,8 +9,6 @@ const Tray = ({ active, name, rows }) => {
   // rows will render tiles
   // tiles buttons will be disabled based on "active" prop
 
-  // console.log(rows);
-
   const secondRareTiles = rows.rare.tiles.slice(7, 14);
   const secondRareRow = {
     ...rows.rare,
