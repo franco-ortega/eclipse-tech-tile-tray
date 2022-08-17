@@ -28,7 +28,6 @@ export default async function handler(req, res) {
       res.json(response);
       break;
     case 'PUT':
-      console.log(req.body[1]);
       const update = await db
         .collection('trays')
         .updateOne(
@@ -36,8 +35,6 @@ export default async function handler(req, res) {
           { $set: req.body[0] },
           req.body[1]
         );
-
-      console.log(update);
       res.json(update);
       break;
     default:

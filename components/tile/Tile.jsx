@@ -7,7 +7,7 @@ const Tile = ({ active, category, color, tile }) => {
   const { activeTrayId, tray, setTray } = useTrayContext();
 
   const onTileClick = async () => {
-    console.log(tile.title);
+    // console.log(tile.title);
     const id = activeTrayId.length
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
@@ -17,7 +17,7 @@ const Tile = ({ active, category, color, tile }) => {
       console.log('This tile has no position');
 
       const total = tray.rows.rare.tiles.reduce((accumulated, current) => {
-        console.log(current);
+        // console.log(current);
         if (current.position) accumulated = accumulated + 1;
         return accumulated;
       }, 0);
