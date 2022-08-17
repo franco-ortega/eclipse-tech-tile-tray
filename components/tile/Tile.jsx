@@ -12,21 +12,21 @@ const Tile = ({ active, category, color, tile }) => {
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
 
-    // let newPosition = 0;
-    // if (!tile.position) {
-    //   console.log('This tile has no position');
+    let newPosition = 0;
+    if (!tile.position) {
+      console.log('This tile has no position');
 
-    //   const total = tray.rows.rare.tiles.reduce((accumulated, current) => {
-    //     console.log(current);
-    //     if (current.position) accumulated = accumulated + 1;
-    //     return accumulated;
-    //   }, 0);
+      const total = tray.rows.rare.tiles.reduce((accumulated, current) => {
+        console.log(current);
+        if (current.position) accumulated = accumulated + 1;
+        return accumulated;
+      }, 0);
 
-    //   newPosition = total + 1;
-    //   console.log(newPosition);
-    // }
+      newPosition = total + 1;
+      console.log(newPosition);
+    }
 
-    // const rarePosition = `rows.rare.tiles.$[element].position`;
+    const rarePosition = `rows.rare.tiles.$[element].position`;
 
     const index = tile.position ? tile.position - 1 : null;
 
@@ -42,8 +42,8 @@ const Tile = ({ active, category, color, tile }) => {
         ]
       : [
           {
-            [selected]: tile.selected + 1
-            // [rarePosition]: newPosition
+            [selected]: tile.selected + 1,
+            [rarePosition]: newPosition
           },
           { arrayFilters: [{ element: tile }] }
         ];

@@ -6,6 +6,8 @@ export default async function handler(req, res) {
 
   const db = client.db('eclipseDB');
 
+  // db.collection('trays').deleteMany({});
+
   switch (req.method) {
     case 'GET':
       if (req.query.id) {
