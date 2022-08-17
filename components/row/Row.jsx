@@ -2,8 +2,6 @@ import Slot from '../slot/Slot';
 import styles from './Row.module.css';
 
 const Row = ({ active, tech }) => {
-  // console.log(active, tech);
-
   const slots = [];
 
   for (let i = 0; i < tech.length; i++) {
@@ -11,8 +9,6 @@ const Row = ({ active, tech }) => {
   }
 
   const findTile = (position, tiles) => {
-    // console.log(position);
-    // console.log(tiles);
     return tiles.find((tile) => tile.position === position);
   };
 

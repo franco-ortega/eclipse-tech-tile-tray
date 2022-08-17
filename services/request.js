@@ -2,9 +2,6 @@ const { NEXT_PUBLIC_API_URL } = process.env;
 const METHODS_WITHOUT_BODY = ['GET', 'DELETE'];
 
 const request = async (method, path, data) => {
-  console.log({ method });
-  console.log({ path });
-  console.log({ data });
   const headers = METHODS_WITHOUT_BODY.includes(method)
     ? {}
     : {
@@ -16,8 +13,6 @@ const request = async (method, path, data) => {
     headers,
     body: JSON.stringify(data)
   }).then((res) => res.json());
-
-  console.log({ response });
 
   return response;
 };

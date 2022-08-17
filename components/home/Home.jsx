@@ -20,8 +20,6 @@ const Home = () => {
   }, []);
 
   const onNewGameClick = async () => {
-    console.log('new game!!');
-
     await postData('/api/trays', {
       ...trayData,
       name: `Tray #${trays.length + 1}`,
@@ -35,7 +33,6 @@ const Home = () => {
   };
 
   const onSelectGame = async (e) => {
-    console.log('selected: ', e.target.value);
     const response = await fetch(
       `${NEXT_PUBLIC_API_URL}/api/trays/?id=${e.target.value}`
     ).then((res) => res.json());
