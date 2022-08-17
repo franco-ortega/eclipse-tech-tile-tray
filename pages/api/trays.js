@@ -25,6 +25,14 @@ export default async function handler(req, res) {
       const response = await db.collection('trays').insertOne(req.body);
       res.json(response);
       break;
+    case 'PUT':
+      const update = await db
+        .collection('trays')
+        .updateOne({ _id: ObjectId(req.query.id) }, { $set: req.body });
+
+      console.log(update);
+      res.json(update);
+      break;
     default:
       console.log('Method not available');
       return;

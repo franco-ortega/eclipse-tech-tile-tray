@@ -17,9 +17,7 @@ const Select = () => {
 
     if (!activeTrayId.length) setActiveTrayId(id);
 
-    const response = await getData(`/api/trays/?id=${id}`).then((res) =>
-      setTray(res)
-    );
+    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
   }, []);
 
   return (
