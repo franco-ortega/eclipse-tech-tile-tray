@@ -32,8 +32,11 @@ export default async function handler(req, res) {
         .collection('trays')
         .findOneAndUpdate(
           { _id: ObjectId(req.query.id) },
-          { $set: req.body[0] },
-          { returnDocument: 'after', arrayFilters: [{ element: req.body[1] }] }
+          { $set: req.body.update },
+          {
+            returnDocument: 'after',
+            arrayFilters: [{ element: req.body.tile }]
+          }
         );
       res.json(update.value);
       break;

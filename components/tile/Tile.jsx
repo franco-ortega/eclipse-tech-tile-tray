@@ -24,17 +24,17 @@ const Tile = ({ active, category, color, tile }) => {
       console.log(newPosition);
     }
 
-    const update = [
-      index
+    const update = {
+      tile,
+      update: index
         ? {
             [selected]: tile.selected + 1
           }
         : {
             [selected]: tile.selected + 1,
             [position]: newPosition
-          },
-      tile
-    ];
+          }
+    };
 
     await putData(`/api/trays?id=${tray._id}`, update).then((res) =>
       setTray(res)
