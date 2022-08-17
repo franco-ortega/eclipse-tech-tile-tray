@@ -7,27 +7,25 @@ const Tile = ({ active, category, color, tile }) => {
   const { activeTrayId, setTray } = useTrayContext();
 
   const onTileClick = async () => {
-    console.log(tile.title);
     const id = activeTrayId.length
       ? activeTrayId
       : getLocalStorage('ACTIVE_TRAY_ID');
 
     const index = tile.position ? tile.position - 1 : null;
+
     const selected = index
       ? `rows.${category}.tiles.${index}.selected`
       : `rows.${category}.tiles.$[element].selected`;
 
-    const value = tile.selected + 1;
-
     const update = index
       ? [
           {
-            [selected]: value
+            [selected]: tile.selected + 1
           }
         ]
       : [
           {
-            [selected]: value
+            [selected]: tile.selected + 1
           },
           { arrayFilters: [{ element: tile }] }
         ];
