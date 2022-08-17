@@ -26,6 +26,9 @@ const Home = () => {
       ...trayData,
       name: `Tray #${trays.length + 1}`,
       date: new Date()
+    }).then((res) => {
+      setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
+      setActiveTrayId(res.insertedId);
     });
 
     router.push('/new-game');
