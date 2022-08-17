@@ -30,12 +30,12 @@ export default async function handler(req, res) {
     case 'PUT':
       const update = await db
         .collection('trays')
-        .updateOne(
+        .findOneAndUpdate(
           { _id: ObjectId(req.query.id) },
           { $set: req.body[0] },
           req.body[1]
         );
-      res.json(update);
+      res.json(update.value);
       break;
     default:
       console.log('Method not available');

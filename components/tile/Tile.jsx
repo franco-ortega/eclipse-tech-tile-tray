@@ -35,19 +35,18 @@ const Tile = ({ active, category, color, tile }) => {
       ? [
           {
             [selected]: tile.selected + 1
-          }
+          },
+          { returnDocument: 'after' }
         ]
       : [
           {
             [selected]: tile.selected + 1,
             [rarePosition]: newPosition
           },
-          { arrayFilters: [{ element: tile }] }
+          { returnDocument: 'after', arrayFilters: [{ element: tile }] }
         ];
 
-    await putData(`/api/trays?id=${id}`, update);
-
-    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
+    await putData(`/api/trays?id=${id}`, update).then((res) => setTray(res));
   };
 
   return (
