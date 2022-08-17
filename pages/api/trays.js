@@ -33,7 +33,7 @@ export default async function handler(req, res) {
         .findOneAndUpdate(
           { _id: ObjectId(req.query.id) },
           { $set: req.body[0] },
-          req.body[1]
+          { returnDocument: 'after', arrayFilters: [{ element: req.body[1] }] }
         );
       res.json(update.value);
       break;
