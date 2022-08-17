@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useTrayContext } from '../../context/trayContext';
+import { getData } from '../../services/request';
 import { getLocalStorage } from '../../utils/localStorage';
 const { NEXT_PUBLIC_API_URL } = process.env;
 import Tray from '../tray/Tray';
 import styles from './Select.module.css';
 
 const Select = () => {
-  const [tray, setTray] = useState(null);
+  const { tray, setTray } = useTrayContext();
   const { activeTrayId, setActiveTrayId } = useTrayContext();
 
   useEffect(async () => {
@@ -16,9 +17,7 @@ const Select = () => {
 
     if (!activeTrayId.length) setActiveTrayId(id);
 
-    await fetch(`${NEXT_PUBLIC_API_URL}/api/trays/?id=${id}`)
-      .then((res) => res.json())
-      .then((res) => setTray(res));
+    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
   }, []);
 
   return (

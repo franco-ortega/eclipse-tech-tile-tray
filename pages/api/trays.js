@@ -2,8 +2,6 @@ import { ObjectId } from 'mongodb';
 import clientPromise from '../../lib/mongodb';
 
 export default async function handler(req, res) {
-  console.log('trays endpoint');
-
   const client = await clientPromise;
 
   const db = client.db('eclipseDB');
@@ -26,6 +24,19 @@ export default async function handler(req, res) {
     case 'POST':
       const response = await db.collection('trays').insertOne(req.body);
       res.json(response);
+      break;
+    case 'PUT':
+      console.log(req.body[1]);
+      const update = await db
+        .collection('trays')
+        .updateOne(
+          { _id: ObjectId(req.query.id) },
+          { $set: req.body[0] },
+          req.body[1]
+        );
+
+      console.log(update);
+      res.json(update);
       break;
     default:
       console.log('Method not available');
