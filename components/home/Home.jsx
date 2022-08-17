@@ -33,9 +33,7 @@ const Home = () => {
   };
 
   const onSelectGame = async (e) => {
-    const response = await fetch(
-      `${NEXT_PUBLIC_API_URL}/api/trays/?id=${e.target.value}`
-    ).then((res) => res.json());
+    const response = await getData(`/api/trays/?id=${e.target.value}`);
 
     setGame(response);
 
