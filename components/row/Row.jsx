@@ -4,11 +4,16 @@ import styles from './Row.module.css';
 const Row = ({ active, tech }) => {
   const slots = [];
 
+  // tech.tiles.sort((a, b) => {
+  //   return a.position - b.position;
+  // });
+
   for (let i = 0; i < tech.length; i++) {
-    slots.push(i);
+    slots.push(i + 1);
   }
 
   const findTile = (position, tiles) => {
+    if (tech.category === 'rare') return tiles[position - 1];
     return tiles.find((tile) => tile.position === position);
   };
 
@@ -21,8 +26,7 @@ const Row = ({ active, tech }) => {
             active={active}
             category={tech.category}
             color={tech.color}
-            // tile={tech.tiles[(slot + 1) * 2] && tech.tiles[(slot + 1) * 2]}
-            tile={findTile(slot + 1, tech.tiles) || tech.tiles[slot]}
+            tile={findTile(slot, tech.tiles)}
           />
         ))}
     </ul>
