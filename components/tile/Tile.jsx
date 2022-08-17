@@ -1,16 +1,13 @@
 import { useTrayContext } from '../../context/trayContext';
 import { getData, putData } from '../../services/request';
-import { getLocalStorage } from '../../utils/localStorage';
+import { getTrayId } from '../../utils/getTrayId';
 import styles from './Tile.module.css';
 
 const Tile = ({ active, category, color, tile }) => {
   const { activeTrayId, tray, setTray } = useTrayContext();
 
   const onTileClick = async () => {
-    // console.log(tile.title);
-    const id = activeTrayId.length
-      ? activeTrayId
-      : getLocalStorage('ACTIVE_TRAY_ID');
+    const id = getTrayId(activeTrayId);
 
     let newPosition = 0;
     if (!tile.position) {
