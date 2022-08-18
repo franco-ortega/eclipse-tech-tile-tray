@@ -1,36 +1,17 @@
 import { useEffect, useState } from 'react';
-const { NEXT_PUBLIC_API_URL } = process.env;
-import { useRouter } from 'next/router';
-import trayData from '../../data/tray.json';
 import styles from './Home.module.css';
-import { useTrayContext } from '../../context/trayContext';
-import { setLocalStorage } from '../../utils/localStorage';
-import { getData, postData } from '../../services/request';
+import { getData } from '../../services/request';
+import NewGameButton from '../buttons/NewGameButton';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
   const [game, setGame] = useState(null);
-  const { setActiveTrayId } = useTrayContext();
-  const router = useRouter();
 
   useEffect(async () => {
     const response = await getData('/api/trays');
 
     await setTrays(response);
   }, []);
-
-  const onNewGameClick = async () => {
-    await postData('/api/trays', {
-      ...trayData,
-      name: `Tray #${trays.length + 1}`,
-      date: new Date()
-    }).then((res) => {
-      setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
-      setActiveTrayId(res.insertedId);
-    });
-
-    router.push('/new-game');
-  };
 
   const onSelectGame = async (e) => {
     const response = await getData(`/api/trays/?id=${e.target.value}`);
@@ -45,7 +26,7 @@ const Home = () => {
   return (
     <div className={styles.Home}>
       <section>
-        <button onClick={onNewGameClick}>New Game</button>
+        <NewGameButton />
         <select name='trays' id='trays' onChange={onSelectGame}>
           <option value=''>Select Game</option>
           {trays &&
