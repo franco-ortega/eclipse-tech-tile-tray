@@ -6,8 +6,7 @@ import Tray from '../tray/Tray';
 import styles from './Select.module.css';
 
 const Select = ({ active }) => {
-  const { tray, setTray } = useTrayContext();
-  const { activeTrayId, setActiveTrayId } = useTrayContext();
+  const { activeTrayId, setActiveTrayId, tray, setTray } = useTrayContext();
 
   useEffect(async () => {
     const id = verifyTrayId(activeTrayId);

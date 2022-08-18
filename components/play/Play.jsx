@@ -16,8 +16,6 @@ const Play = ({ active }) => {
     await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
   }, []);
 
-  console.log(tray);
-
   return (
     <div className={styles.Play}>
       <h2>Play Game</h2>

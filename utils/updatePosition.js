@@ -5,7 +5,6 @@ export const updatePosition = (position, tiles) => {
       return accumulated;
     }, 0);
 
-    console.log(totalPositions + 1);
     return totalPositions + 1;
   }
 

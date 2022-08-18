@@ -8,7 +8,6 @@ const Tile = ({ active, category, color, tile }) => {
 
   const onTileClick = active
     ? async () => {
-        console.log('active!! :-D');
         const usedKey = `rows.${category}.tiles.$[element].used`;
 
         const usedUpdate = {
@@ -23,7 +22,6 @@ const Tile = ({ active, category, color, tile }) => {
         );
       }
     : async () => {
-        console.log('not active :(');
         const selectedKey = `rows.${category}.tiles.$[element].selected`;
         const positionKey = `rows.${category}.tiles.$[element].position`;
 
