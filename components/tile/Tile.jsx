@@ -6,30 +6,47 @@ import styles from './Tile.module.css';
 const Tile = ({ active, category, color, tile }) => {
   const { tray, setTray } = useTrayContext();
 
-  const onTileClick = async () => {
-    const selectedKey = `rows.${category}.tiles.$[element].selected`;
-    const positionKey = `rows.${category}.tiles.$[element].position`;
+  const onTileClick = active
+    ? async () => {
+        console.log('active!! :-D');
+        const usedKey = `rows.${category}.tiles.$[element].used`;
 
-    const originalPosition = tile.position ? tile.position : null;
-    const tiles = tray.rows.rare.tiles;
-    const newPosition = updatePosition(originalPosition, tiles);
-
-    const selectedUpdate = {
-      tile,
-      update: originalPosition
-        ? {
-            [selectedKey]: tile.selected + 1
+        const usedUpdate = {
+          tile,
+          update: {
+            [usedKey]: tile.used + 1
           }
-        : {
-            [selectedKey]: tile.selected + 1,
-            [positionKey]: newPosition
-          }
-    };
+        };
 
-    await putData(`/api/trays?id=${tray._id}`, selectedUpdate).then((res) =>
-      setTray(res)
-    );
-  };
+        await putData(`/api/trays?id=${tray._id}`, usedUpdate).then((res) =>
+          setTray(res)
+        );
+      }
+    : async () => {
+        console.log('not active :(');
+        const selectedKey = `rows.${category}.tiles.$[element].selected`;
+        const positionKey = `rows.${category}.tiles.$[element].position`;
+
+        const originalPosition = tile.position ? tile.position : null;
+        const tiles = tray.rows.rare.tiles;
+        const newPosition = updatePosition(originalPosition, tiles);
+
+        const selectedUpdate = {
+          tile,
+          update: originalPosition
+            ? {
+                [selectedKey]: tile.selected + 1
+              }
+            : {
+                [selectedKey]: tile.selected + 1,
+                [positionKey]: newPosition
+              }
+        };
+
+        await putData(`/api/trays?id=${tray._id}`, selectedUpdate).then((res) =>
+          setTray(res)
+        );
+      };
 
   return (
     <button
