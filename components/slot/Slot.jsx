@@ -6,9 +6,15 @@ const Slot = ({ active, category, color, tile }) => {
     <li className={styles.Slot}>
       {!active && tile ? (
         <Tile active={active} category={category} color={color} tile={tile} />
-      ) : active && tile.selected - tile.used ? (
+      ) : active && tile.selected ? (
         <Tile active={active} category={category} color={color} tile={tile} />
-      ) : null}
+      ) : (
+        tile.position && (
+          <div data-slot='empty'>
+            {tile.cost.max} <span>{tile.cost.min}</span>
+          </div>
+        )
+      )}
     </li>
   );
 };
