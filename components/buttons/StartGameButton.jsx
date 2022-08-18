@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Button from './Button';
+import styles from './StartGameButton.module.css';
 
 const StartGameButton = () => {
   const router = useRouter();
@@ -11,7 +12,11 @@ const StartGameButton = () => {
 
   const text = 'Start Game';
 
-  return <Button onButtonClick={onStartGameClick} text={text} />;
+  return (
+    <div className={styles.StartGameButton}>
+      <Button onButtonClick={onStartGameClick} text={text} />
+    </div>
+  );
 };
 
 export default StartGameButton;
