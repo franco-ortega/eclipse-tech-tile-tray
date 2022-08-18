@@ -1,0 +1,12 @@
+.Play {
+  padding: 1rem;
+  color: hsl(0, 0%, 90%);
+}
+
+.Play h2,
+.Play h3,
+.Play h3 + p {
+  width: fit-content;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+}

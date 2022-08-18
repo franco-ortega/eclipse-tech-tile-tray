@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import styles from './Home.module.css';
 import { getData } from '../../services/request';
 import NewGameButton from '../buttons/NewGameButton';
+import styles from './Home.module.css';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);

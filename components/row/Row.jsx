@@ -4,10 +4,6 @@ import styles from './Row.module.css';
 const Row = ({ active, tech }) => {
   const slots = [];
 
-  // tech.tiles.sort((a, b) => {
-  //   return a.position - b.position;
-  // });
-
   for (let i = 0; i < tech.length; i++) {
     slots.push(i + 1);
   }
