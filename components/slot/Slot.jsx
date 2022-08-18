@@ -6,7 +6,7 @@ const Slot = ({ active, category, color, tile }) => {
     <li className={styles.Slot}>
       {!active && tile ? (
         <Tile active={active} category={category} color={color} tile={tile} />
-      ) : active && tile.selected ? (
+      ) : active && tile.selected - tile.used ? (
         <Tile active={active} category={category} color={color} tile={tile} />
       ) : (
         tile &&
