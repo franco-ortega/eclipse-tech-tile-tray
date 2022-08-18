@@ -12,6 +12,8 @@
   color: hsl(350, 100%, 88%);
   font-family: 'Oswald', sans-serif;
   font-size: 1.25rem;
+
+  position: relative;
 }
 
 .Tile:disabled {
@@ -28,7 +30,13 @@
   font-size: 0.85rem;
 }
 
-.Tile div + div {
+.Tile span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Tile span + div {
   width: 100%;
   margin-left: 0.1rem;
   padding: 0.25rem;

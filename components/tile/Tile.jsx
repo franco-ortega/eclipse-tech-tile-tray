@@ -38,7 +38,12 @@ const Tile = ({ active, category, color, tile }) => {
       disabled={!active && tile.limit - tile.selected === 0}
       onClick={onTileClick}
     >
-      <div>{tile.title}</div>x{tile.limit - tile.selected}
+      <div>{tile.title}</div>
+      <span>
+        {!active
+          ? `x${tile.limit - tile.selected}`
+          : `x${tile.selected - tile.used}`}
+      </span>
       <div>
         <p>{tile.cost.max}</p>
         <p>{tile.cost.min}</p>
