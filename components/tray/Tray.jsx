@@ -31,6 +31,13 @@ const Tray = ({ active, name, rows }) => {
   // console.log({ secondRareRow });
   // console.log({ thirdRareRow });
 
+  if (active) {
+    console.log("let's filter these rare tiles!!!");
+    rows.rare.tiles = rows.rare.tiles
+      .filter((tile) => tile.position && tile.selected - tile.used)
+      .sort((a, b) => a.position - b.position);
+  }
+
   return (
     <div className={styles.Tray}>
       <Row active={active} tech={rows.military} />
