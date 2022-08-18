@@ -1,7 +1,9 @@
+import Select from '../components/select/Select';
+
 export default function AddTiles() {
   return (
     <div>
-      <h2>Add Tiles</h2>
+      <Select active={false} />
     </div>
   );
 }
