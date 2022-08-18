@@ -10,7 +10,7 @@ const Slot = ({ active, category, color, tile }) => {
         <Tile active={active} category={category} color={color} tile={tile} />
       ) : (
         tile &&
-        tile.position && (
+        category !== 'rare' && (
           <div data-slot='empty'>
             {tile.cost.max} <span>{tile.cost.min}</span>
           </div>
