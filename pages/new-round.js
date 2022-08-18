@@ -1,6 +1,6 @@
 import Select from '../components/select/Select';
 
-export default function AddTiles() {
+export default function NeRound() {
   return (
     <div>
       <Select active={false} />
