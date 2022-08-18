@@ -5,7 +5,7 @@ import { verifyTrayId } from '../../utils/verifyTrayId';
 import Tray from '../tray/Tray';
 import styles from './Select.module.css';
 
-const Select = () => {
+const Select = ({ active }) => {
   const { tray, setTray } = useTrayContext();
   const { activeTrayId, setActiveTrayId } = useTrayContext();
 
@@ -21,7 +21,7 @@ const Select = () => {
     <div className={styles.Select}>
       <h3>{tray && tray.name}</h3>
       <p>Click on tiles to add them to your tray.</p>
-      {tray && <Tray active={false} name={tray.name} rows={tray.rows} />}
+      {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
     </div>
   );
 };
