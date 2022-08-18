@@ -6,7 +6,6 @@ const StartGameButton = () => {
   const router = useRouter();
 
   const onStartGameClick = () => {
-    console.log('start game!!');
     router.push('/play-game');
   };
 
