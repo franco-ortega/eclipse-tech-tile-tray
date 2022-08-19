@@ -17,15 +17,18 @@ const Home = () => {
   }, []);
 
   const onSelectGame = async (e) => {
+    if (!e.target.value) return;
+
     const response = await getData(`/api/trays/?id=${e.target.value}`);
 
     setActiveTrayId(response._id);
 
-    alert(
-      `You have selected ${response.name}. Still working on displaying this info.`
+    const answer = confirm(
+      `You have selected ${response.name}. Is this correct?`
     );
 
-    router.push('/play-game');
+    if (answer) router.push('/play-game');
+    else alert('Select another tray.');
   };
 
   return (
