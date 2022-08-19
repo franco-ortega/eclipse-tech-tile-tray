@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTrayContext } from '../../context/trayContext';
 import { getData } from '../../services/request';
+import { setLocalStorage } from '../../utils/localStorage';
 import NewGameButton from '../buttons/NewGameButton';
 import styles from './Home.module.css';
 
@@ -22,6 +23,7 @@ const Home = () => {
     const response = await getData(`/api/trays/?id=${e.target.value}`);
 
     setActiveTrayId(response._id);
+    setLocalStorage('ACTIVE_TRAY_ID', response.insertedId);
 
     const answer = confirm(
       `You have selected ${response.name}. Is this correct?`
