@@ -38,7 +38,7 @@ const Home = () => {
   return (
     <div className={styles.Home}>
       <section>
-        <NewGameButton trays={trays} />
+        <NewGameButton length={trays.length} />
         <select name='trays' id='trays' onChange={onSelectGame}>
           <option value=''>Select Game</option>
           {trays &&
