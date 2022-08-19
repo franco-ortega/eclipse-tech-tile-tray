@@ -3,20 +3,20 @@ import Button from './Button';
 import ButtonContainer from './ButtonContainer';
 import styles from './ButtonContainer.module.css';
 
-const StartRoundButton = () => {
+const NextRoundButton = () => {
   const router = useRouter();
 
-  const onStartRoundClick = () => {
-    router.push('/play-game');
+  const onNewRoundClick = () => {
+    router.push('/new-round');
   };
 
-  const text = 'Start Round';
+  const text = 'Next Round';
 
   return (
     <ButtonContainer>
-      <Button onButtonClick={onStartRoundClick} text={text} />
+      <Button onButtonClick={onNewRoundClick} text={text} />
     </ButtonContainer>
   );
 };
 
-export default StartRoundButton;
+export default NextRoundButton;

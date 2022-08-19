@@ -1,0 +1,14 @@
+.SelectTiles {
+  color: hsl(0, 0%, 90%);
+}
+
+.SelectTiles h3,
+.SelectTiles h3 + p {
+  width: fit-content;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+}
+
+.SelectTiles [data-buttons='start'] {
+  padding: 1rem;
+}

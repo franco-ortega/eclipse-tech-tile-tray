@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useTrayContext } from '../../context/trayContext';
 import { getData } from '../../services/request';
 import { verifyTrayId } from '../../utils/verifyTrayId';
+import EndGameButton from '../buttons/EndGameButton';
+import NextRoundButton from '../buttons/NextRoundButton';
 import Tray from '../tray/Tray';
 import styles from './Play.module.css';
 
@@ -22,6 +24,10 @@ const Play = ({ active }) => {
       <h3>{tray && tray.name}</h3>
       <p>Click on a tile to purchase it.</p>
       {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
+      <div data-buttons='next-and-end'>
+        <NextRoundButton />
+        <EndGameButton />
+      </div>
     </div>
   );
 };

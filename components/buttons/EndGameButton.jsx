@@ -3,20 +3,20 @@ import Button from './Button';
 import ButtonContainer from './ButtonContainer';
 import styles from './ButtonContainer.module.css';
 
-const StartRoundButton = () => {
+const EndGameButton = () => {
   const router = useRouter();
 
-  const onStartRoundClick = () => {
-    router.push('/play-game');
+  const onEndButtonClick = () => {
+    router.push('/');
   };
 
-  const text = 'Start Round';
+  const text = 'End Game';
 
   return (
     <ButtonContainer>
-      <Button onButtonClick={onStartRoundClick} text={text} />
+      <Button onButtonClick={onEndButtonClick} text={text} />
     </ButtonContainer>
   );
 };
 
-export default StartRoundButton;
+export default EndGameButton;
