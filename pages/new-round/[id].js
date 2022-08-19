@@ -1,6 +1,6 @@
+import { ObjectId } from 'mongodb';
 import clientPromise from '../../lib/mongodb';
 import SelectTiles from '../../components/selectTiles/SelectTiles';
-import { ObjectId } from 'mongodb';
 
 export default function NewRound({ data }) {
   return (
@@ -11,6 +11,7 @@ export default function NewRound({ data }) {
 }
 
 export async function getServerSideProps(context) {
+  console.log(' NEW ROUND ID PAGE');
   try {
     await clientPromise;
 

@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTrayContext } from '../../context/trayContext';
-import { getData } from '../../services/request';
-import { verifyTrayId } from '../../utils/verifyTrayId';
 import StartRoundButton from '../buttons/StartRoundButton';
 import Tray from '../tray/Tray';
 import styles from './SelectTiles.module.css';
 
 const SelectTiles = ({ active, data }) => {
-  const { activeTrayId, setActiveTrayId, tray, setTray } = useTrayContext();
-  console.log('SELECT TILES SERVER PROPS DATA: ', data.name);
+  const { tray, setTray } = useTrayContext();
 
   useEffect(async () => {
-    const id = verifyTrayId(activeTrayId);
-
-    if (!activeTrayId.length) setActiveTrayId(id);
-
     setTray(data);
   }, []);
 
