@@ -25,7 +25,7 @@ const Play = ({ active }) => {
       <p>Click on a tile to purchase it.</p>
       {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
       <div data-buttons='next-and-end'>
-        <NextRoundButton />
+        <NextRoundButton id={activeTrayId} />
         <EndGameButton />
       </div>
     </div>

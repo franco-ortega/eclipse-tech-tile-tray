@@ -8,13 +8,13 @@ import styles from './SelectTiles.module.css';
 
 const SelectTiles = ({ active, data }) => {
   const { activeTrayId, setActiveTrayId, tray, setTray } = useTrayContext();
+  console.log('SELECT TILES SERVER PROPS DATA: ', data.name);
 
   useEffect(async () => {
     const id = verifyTrayId(activeTrayId);
 
     if (!activeTrayId.length) setActiveTrayId(id);
 
-    // await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
     setTray(data);
   }, []);
 

@@ -5,7 +5,7 @@ import styles from './Home.module.css';
 
 const Home = ({ data }) => {
   const [trays, setTrays] = useState([]);
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     setTrays(data);
