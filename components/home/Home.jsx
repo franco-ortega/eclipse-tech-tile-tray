@@ -24,11 +24,11 @@ const Home = () => {
 
     const response = await getData(`/api/trays/?id=${e.target.value}`);
 
-    const answer = confirm(
+    const proceedToGame = confirm(
       `You have selected ${response.name}. Click OK to proceed.`
     );
 
-    if (answer) {
+    if (proceedToGame) {
       setActiveTrayId(response._id);
       setLocalStorage('ACTIVE_TRAY_ID', response._id);
       router.push('/play-game');
