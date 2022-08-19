@@ -5,7 +5,7 @@ export default function NeRound() {
   return (
     <div>
       <SelectTiles active={false} />
-      <StartRoundButton />
+      {/* <StartRoundButton /> */}
     </div>
   );
 }
