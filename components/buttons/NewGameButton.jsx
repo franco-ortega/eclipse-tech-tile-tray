@@ -12,7 +12,7 @@ const NewGameButton = ({ length }) => {
   const onNewGameClick = async () => {
     await postData('/api/trays', {
       ...trayData,
-      name: `Tray #${length + 1}`,
+      name: `Game #${length + 1}`,
       date: new Date()
     }).then((res) => {
       setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
