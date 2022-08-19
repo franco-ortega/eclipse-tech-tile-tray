@@ -4,6 +4,7 @@ import { postData } from '../../services/request';
 import { setLocalStorage } from '../../utils/localStorage';
 import trayData from '../../data/tray.json';
 import Button from './Button';
+import ButtonContainer from './ButtonContainer';
 
 const NewGameButton = ({ length }) => {
   const { setActiveTrayId } = useTrayContext();
@@ -24,7 +25,11 @@ const NewGameButton = ({ length }) => {
 
   const text = 'New Game';
 
-  return <Button onButtonClick={onNewGameClick} text={text} />;
+  return (
+    <ButtonContainer>
+      <Button onButtonClick={onNewGameClick} text={text} />
+    </ButtonContainer>
+  );
 };
 
 export default NewGameButton;

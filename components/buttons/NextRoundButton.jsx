@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Button from './Button';
+import ButtonContainer from './ButtonContainer';
 import styles from './ButtonContainer.module.css';
 
 const NextRoundButton = () => {
@@ -12,9 +13,9 @@ const NextRoundButton = () => {
   const text = 'Next Round';
 
   return (
-    <div className={styles.ButtonContainer}>
+    <ButtonContainer>
       <Button onButtonClick={onNewRoundClick} text={text} />
-    </div>
+    </ButtonContainer>
   );
 };
 

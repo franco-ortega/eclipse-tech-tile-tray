@@ -1,6 +1,7 @@
 .Tray {
   background-color: #717673;
   width: fit-content;
+  margin-block: 1rem;
   margin-inline: auto;
   padding: 1rem;
 }

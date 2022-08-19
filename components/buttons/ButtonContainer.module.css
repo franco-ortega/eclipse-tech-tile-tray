@@ -1,8 +1,4 @@
 .ButtonContainer {
   width: fit-content;
   margin-inline: auto;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-
-  background-color: pink;
 }

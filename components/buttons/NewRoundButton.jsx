@@ -12,9 +12,9 @@ const NewRoundButton = () => {
   const text = 'New Round';
 
   return (
-    <div className={styles.ButtonContainer}>
+    <ButtonContainer>
       <Button onButtonClick={onNewRoundClick} text={text} />
-    </div>
+    </ButtonContainer>
   );
 };
 
