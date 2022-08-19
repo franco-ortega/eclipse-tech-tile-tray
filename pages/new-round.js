@@ -1,10 +1,10 @@
 import StartRoundButton from '../components/buttons/StartRoundButton';
-import Select from '../components/select/Select';
+import SelectTiles from '../components/selectTiles/SelectTiles';
 
 export default function NeRound() {
   return (
     <div>
-      <Select active={false} />
+      <SelectTiles active={false} />
       <StartRoundButton />
     </div>
   );

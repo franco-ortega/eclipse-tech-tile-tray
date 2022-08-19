@@ -1,10 +1,10 @@
-import Select from '../components/select/Select';
+import SelectTiles from '../components/selectTiles/SelectTiles';
 import StartGameButton from '../components/buttons/StartGameButton';
 
 export default function NewGame() {
   return (
     <div>
-      <Select active={false} />
+      <SelectTiles active={false} />
       <StartGameButton />
     </div>
   );
