@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useTrayContext } from '../../context/trayContext';
 import { getData } from '../../services/request';
 import { setLocalStorage } from '../../utils/localStorage';
+import styles from './TrayList.module.css';
 
 const TrayList = ({ trays }) => {
   const { setActiveTrayId } = useTrayContext();
@@ -27,7 +28,12 @@ const TrayList = ({ trays }) => {
   };
 
   return (
-    <select name='trays' id='trays' onChange={onSelectGame}>
+    <select
+      className={styles.TrayList}
+      name='trays'
+      id='trays'
+      onChange={onSelectGame}
+    >
       <option value=''>Select Game</option>
       {trays &&
         trays
