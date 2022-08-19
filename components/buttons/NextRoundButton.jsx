@@ -2,20 +2,20 @@ import { useRouter } from 'next/router';
 import Button from './Button';
 import styles from './ButtonContainer.module.css';
 
-const StartRoundButton = () => {
+const NextRoundButton = () => {
   const router = useRouter();
 
-  const onStartRoundClick = () => {
-    router.push('/play-game');
+  const onNewRoundClick = () => {
+    router.push('/new-round');
   };
 
-  const text = 'Start Round';
+  const text = 'Next Round';
 
   return (
     <div className={styles.ButtonContainer}>
-      <Button onButtonClick={onStartRoundClick} text={text} />
+      <Button onButtonClick={onNewRoundClick} text={text} />
     </div>
   );
 };
 
-export default StartRoundButton;
+export default NextRoundButton;

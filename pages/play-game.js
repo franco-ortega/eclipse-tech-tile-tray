@@ -1,11 +1,11 @@
 import Play from '../components/play/Play';
-import NewRoundButton from '../components/buttons/NewRoundButton';
+import NextRoundButton from '../components/buttons/NextRoundButton';
 
 export default function PlayGame() {
   return (
     <div>
       <Play active={true} />
-      <NewRoundButton />
+      <NextRoundButton />
     </div>
   );
 }
