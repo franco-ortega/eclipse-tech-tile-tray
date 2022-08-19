@@ -14,10 +14,8 @@ const Home = () => {
 
   return (
     <div className={styles.Home}>
-      <section>
-        <NewGameButton length={trays.length} />
-        <TrayList trays={trays} />
-      </section>
+      <NewGameButton length={trays.length} />
+      <TrayList trays={trays} />
     </div>
   );
 };
