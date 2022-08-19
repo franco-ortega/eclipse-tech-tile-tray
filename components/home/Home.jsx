@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getData } from '../../services/request';
 import NewGameButton from '../buttons/NewGameButton';
 import TrayList from '../trayList/TrayList';
 import styles from './Home.module.css';
 
-const Home = () => {
+const Home = ({ data }) => {
   const [trays, setTrays] = useState([]);
 
-  useEffect(async () => {
-    const response = await getData('/api/trays');
-    await setTrays(response);
+  useEffect(() => {
+    setTrays(data);
   }, []);
 
   return (
