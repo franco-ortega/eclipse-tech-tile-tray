@@ -18,7 +18,7 @@ const Home = () => {
   }, []);
 
   const onSelectGame = async (e) => {
-    if (!e.target.value) return;
+    if (!e.target.value) alert('Please select a game.');
 
     const response = await getData(`/api/trays/?id=${e.target.value}`);
 
@@ -26,11 +26,11 @@ const Home = () => {
     setLocalStorage('ACTIVE_TRAY_ID', response._id);
 
     const answer = confirm(
-      `You have selected ${response.name}. Is this correct?`
+      `You have selected ${response.name}. Click OK to proceed.`
     );
 
     if (answer) router.push('/play-game');
-    else alert('Select another tray.');
+    else alert('Please select another game.');
   };
 
   return (
@@ -40,11 +40,17 @@ const Home = () => {
         <select name='trays' id='trays' onChange={onSelectGame}>
           <option value=''>Select Game</option>
           {trays &&
-            trays.map((tray) => (
-              <option key={tray._id} value={tray._id}>
-                {tray.name}
-              </option>
-            ))}
+            trays
+              .sort((a, b) => {
+                if (a.date > b.date) return -1;
+                if (a.date < b.date) return 1;
+                return 0;
+              })
+              .map((tray) => (
+                <option key={tray._id} value={tray._id}>
+                  {tray.name}
+                </option>
+              ))}
         </select>
       </section>
     </div>
