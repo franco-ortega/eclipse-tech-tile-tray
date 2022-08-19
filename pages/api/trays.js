@@ -28,16 +28,14 @@ export default async function handler(req, res) {
       res.json(response);
       break;
     case 'PUT':
-      const update = await db
-        .collection('trays')
-        .findOneAndUpdate(
-          { _id: ObjectId(req.query.id) },
-          { $set: req.body.update },
-          {
-            returnDocument: 'after',
-            arrayFilters: [{ element: req.body.tile }]
-          }
-        );
+      const update = await db.collection('trays').findOneAndUpdate(
+        { _id: ObjectId(req.query.id) },
+        { $set: req.body.update },
+        {
+          returnDocument: 'after',
+          arrayFilters: [{ element: req.body.tile }]
+        }
+      );
       res.json(update.value);
       break;
     default:
