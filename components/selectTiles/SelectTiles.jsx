@@ -6,7 +6,7 @@ import StartRoundButton from '../buttons/StartRoundButton';
 import Tray from '../tray/Tray';
 import styles from './SelectTiles.module.css';
 
-const SelectTiles = ({ active }) => {
+const SelectTiles = ({ active, data }) => {
   const { activeTrayId, setActiveTrayId, tray, setTray } = useTrayContext();
 
   useEffect(async () => {
@@ -14,7 +14,8 @@ const SelectTiles = ({ active }) => {
 
     if (!activeTrayId.length) setActiveTrayId(id);
 
-    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
+    // await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
+    setTray(data);
   }, []);
 
   return (
