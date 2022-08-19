@@ -1,11 +1,14 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useTrayContext } from '../../context/trayContext';
 import { getData } from '../../services/request';
 import NewGameButton from '../buttons/NewGameButton';
 import styles from './Home.module.css';
 
 const Home = () => {
   const [trays, setTrays] = useState([]);
-  const [game, setGame] = useState(null);
+  const { setActiveTrayId } = useTrayContext();
+  const router = useRouter();
 
   useEffect(async () => {
     const response = await getData('/api/trays');
@@ -16,11 +19,13 @@ const Home = () => {
   const onSelectGame = async (e) => {
     const response = await getData(`/api/trays/?id=${e.target.value}`);
 
-    setGame(response);
+    setActiveTrayId(response._id);
 
     alert(
       `You have selected ${response.name}. Still working on displaying this info.`
     );
+
+    router.push('/play-game');
   };
 
   return (
