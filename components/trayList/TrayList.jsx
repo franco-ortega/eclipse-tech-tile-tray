@@ -23,7 +23,7 @@ const TrayList = ({ trays }) => {
     if (proceedToGame) {
       setActiveTrayId(response._id);
       setLocalStorage('ACTIVE_TRAY_ID', response._id);
-      router.push('/play-game');
+      router.push(`/play-game/${response._id}`);
     } else alert('Please select another game.');
   };
 
