@@ -5,7 +5,7 @@ import { setLocalStorage } from '../../utils/localStorage';
 import trayData from '../../data/tray.json';
 import Button from './Button';
 
-const NewGameButton = () => {
+const NewGameButton = ({ trays }) => {
   const { setActiveTrayId } = useTrayContext();
   const router = useRouter();
 
