@@ -23,7 +23,7 @@ const Home = () => {
     const response = await getData(`/api/trays/?id=${e.target.value}`);
 
     setActiveTrayId(response._id);
-    setLocalStorage('ACTIVE_TRAY_ID', response.insertedId);
+    setLocalStorage('ACTIVE_TRAY_ID', response._id);
 
     const answer = confirm(
       `You have selected ${response.name}. Is this correct?`
