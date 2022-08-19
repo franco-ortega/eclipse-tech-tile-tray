@@ -13,24 +13,26 @@ const Home = () => {
 
   useEffect(async () => {
     const response = await getData('/api/trays');
-
     await setTrays(response);
   }, []);
 
   const onSelectGame = async (e) => {
-    if (!e.target.value) alert('Please select a game.');
+    if (!e.target.value) {
+      alert('Please select a game.');
+      return;
+    }
 
     const response = await getData(`/api/trays/?id=${e.target.value}`);
-
-    setActiveTrayId(response._id);
-    setLocalStorage('ACTIVE_TRAY_ID', response._id);
 
     const answer = confirm(
       `You have selected ${response.name}. Click OK to proceed.`
     );
 
-    if (answer) router.push('/play-game');
-    else alert('Please select another game.');
+    if (answer) {
+      setActiveTrayId(response._id);
+      setLocalStorage('ACTIVE_TRAY_ID', response._id);
+      router.push('/play-game');
+    } else alert('Please select another game.');
   };
 
   return (
