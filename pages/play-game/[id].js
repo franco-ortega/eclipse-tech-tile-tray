@@ -11,10 +11,7 @@ export default function PlayGame({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(' PLAY GAME ID PAGE');
   try {
-    await clientPromise;
-
     const client = await clientPromise;
     const db = client.db('eclipseDB');
 

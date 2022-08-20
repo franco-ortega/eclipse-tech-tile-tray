@@ -4,7 +4,7 @@ import { getData } from '../../services/request';
 import { setLocalStorage } from '../../utils/localStorage';
 import styles from './TrayList.module.css';
 
-const TrayList = ({ trays }) => {
+const TrayList = ({ data }) => {
   const { setActiveTrayId } = useTrayContext();
   const router = useRouter();
 
@@ -14,7 +14,7 @@ const TrayList = ({ trays }) => {
       return;
     }
 
-    const response = await getData(`/api/trays/?id=${e.target.value}`);
+    const response = await getData(`/api/tray/${e.target.value}`);
 
     const proceedToGame = confirm(
       `You have selected ${response.name}. Click OK to proceed.`
@@ -35,8 +35,8 @@ const TrayList = ({ trays }) => {
       onChange={onSelectGame}
     >
       <option value=''>Select Game</option>
-      {trays &&
-        trays
+      {data &&
+        data
           .sort((a, b) => {
             if (a.date > b.date) return -1;
             if (a.date < b.date) return 1;

@@ -6,7 +6,6 @@ import styles from './SelectTiles.module.css';
 
 const SelectTiles = ({ active, data }) => {
   const { tray, setTray, activeTrayId, setActiveTrayId } = useTrayContext();
-  console.log('SELECT TILES ACTIVE TRAY ID: ', activeTrayId);
 
   useEffect(async () => {
     setTray(data);

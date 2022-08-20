@@ -5,8 +5,6 @@ import Button from './Button';
 const NextRoundButton = ({ id }) => {
   const router = useRouter();
 
-  console.log(id);
-
   const onNewRoundClick = () => {
     router.push(`/new-round/${id}`);
   };

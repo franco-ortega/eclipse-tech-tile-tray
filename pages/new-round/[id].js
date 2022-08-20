@@ -11,10 +11,7 @@ export default function NewRound({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(' NEW ROUND ID PAGE');
   try {
-    await clientPromise;
-
     const client = await clientPromise;
     const db = client.db('eclipseDB');
 

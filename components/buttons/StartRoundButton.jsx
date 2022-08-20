@@ -5,8 +5,6 @@ import ButtonContainer from './ButtonContainer';
 const StartRoundButton = ({ id }) => {
   const router = useRouter();
 
-  console.log('START ROUND BUTTON ID: ', id);
-
   const onStartRoundClick = () => {
     router.push(`/play-game/${id}`);
   };

@@ -18,9 +18,8 @@ const NewGameButton = ({ length }) => {
     }).then((res) => {
       setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
       setActiveTrayId(res.insertedId);
+      router.push(`/new-game/${res.insertedId}`);
     });
-
-    router.push('/new-game');
   };
 
   const text = 'New Game';
