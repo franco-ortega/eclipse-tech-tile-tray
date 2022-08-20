@@ -1,4 +1,4 @@
-import SelectTiles from '../components/selectTiles/SelectTiles';
+import SelectTiles from '../../components/selectTiles/SelectTiles';
 
 export default function NewRound() {
   return (
