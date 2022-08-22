@@ -11,13 +11,11 @@ export async function getServerSideProps(context) {
     const client = await clientPromise;
     const db = client.db('eclipseDB');
 
-    const raw = await db
+    const response = await db
       .collection('trays')
       .findOne({ _id: ObjectId(context.params.id) });
 
-    const data = await JSON.parse(JSON.stringify(raw));
-
-    console.log('NEW GAME data: ', data);
+    const data = await JSON.parse(JSON.stringify(response));
 
     return {
       props: { isConnected: true, data }
