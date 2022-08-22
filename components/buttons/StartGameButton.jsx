@@ -3,11 +3,11 @@ import Button from './Button';
 import ButtonContainer from './ButtonContainer';
 import styles from './ButtonContainer.module.css';
 
-const StartGameButton = () => {
+const StartGameButton = ({ id }) => {
   const router = useRouter();
 
   const onStartGameClick = () => {
-    router.push('/play-game');
+    router.push(`/play-game/${id}`);
   };
 
   const text = 'Start Game';

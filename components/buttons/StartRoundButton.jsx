@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router';
 import Button from './Button';
 import ButtonContainer from './ButtonContainer';
-import styles from './ButtonContainer.module.css';
 
-const StartRoundButton = () => {
+const StartRoundButton = ({ id }) => {
   const router = useRouter();
 
   const onStartRoundClick = () => {
-    router.push('/play-game');
+    router.push(`/play-game/${id}`);
   };
 
   const text = 'Start Round';

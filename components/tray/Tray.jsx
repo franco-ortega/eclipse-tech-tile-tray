@@ -2,12 +2,6 @@ import Row from '../row/Row';
 import styles from './Tray.module.css';
 
 const Tray = ({ active, rows }) => {
-  if (active) {
-    rows.rare.tiles = rows.rare.tiles
-      .filter((tile) => tile.position && tile.selected - tile.used)
-      .sort((a, b) => a.position - b.position);
-  }
-
   return (
     <div className={styles.Tray}>
       <Row active={active} tech={rows.military} />
