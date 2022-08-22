@@ -25,18 +25,6 @@ export async function getServerSideProps(context) {
 
     const data = await JSON.parse(JSON.stringify(raw));
 
-    data.rows.military.tiles = data.rows.military.tiles.filter(
-      (tile) => tile.position && tile.selected - tile.used
-    );
-
-    data.rows.grid.tiles = data.rows.grid.tiles.filter(
-      (tile) => tile.position && tile.selected - tile.used
-    );
-
-    data.rows.nano.tiles = data.rows.nano.tiles.filter(
-      (tile) => tile.position && tile.selected - tile.used
-    );
-
     data.rows.military.tiles = availableTiles(data.rows.military.tiles);
     data.rows.grid.tiles = availableTiles(data.rows.grid.tiles);
     data.rows.nano.tiles = availableTiles(data.rows.nano.tiles);
