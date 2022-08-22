@@ -8,7 +8,6 @@ import Button from './Button';
 
 const NewGameButton = ({ length }) => {
   const { setActiveTrayId } = useTrayContext();
-
   const router = useRouter();
 
   const onNewGameClick = async () => {
@@ -17,6 +16,7 @@ const NewGameButton = ({ length }) => {
       name: `Game #${length + 1}`,
       date: new Date()
     }).then((res) => {
+      console.log(res);
       setActiveTrayId(res.insertedId);
       setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
       return res.insertedId;
