@@ -3,11 +3,7 @@ import clientPromise from '../../lib/mongodb';
 import SelectTiles from '../../components/selectTiles/SelectTiles';
 
 export default function NewGame({ data }) {
-  return (
-    <div>
-      <SelectTiles active={false} data={data} />
-    </div>
-  );
+  return <SelectTiles active={false} data={data} />;
 }
 
 export async function getServerSideProps(context) {
