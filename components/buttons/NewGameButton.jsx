@@ -22,7 +22,7 @@ const NewGameButton = ({ length }) => {
       return res.insertedId;
     });
 
-    router.push(`/new-game/${id.insertedId}`);
+    router.push(`/new-game/${id}`);
   };
 
   const text = 'New Game';

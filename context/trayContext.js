@@ -6,7 +6,7 @@ export const TrayProvider = ({ children }) => {
   const [activeTrayId, setActiveTrayId] = useState('');
   const [tray, setTray] = useState(null);
 
-  // console.log('CONTEXT ID: ', activeTrayId);
+  console.log('CONTEXT tray: ', tray);
 
   return (
     <TrayContext.Provider

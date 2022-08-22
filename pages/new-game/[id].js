@@ -21,6 +21,8 @@ export async function getServerSideProps(context) {
 
     const data = await JSON.parse(JSON.stringify(raw));
 
+    console.log('NEW GAME data: ', data);
+
     return {
       props: { isConnected: true, data }
     };
