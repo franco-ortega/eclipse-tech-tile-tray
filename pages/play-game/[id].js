@@ -7,11 +7,7 @@ import {
 } from '../../utils/filterAndSort';
 
 export default function PlayGame({ data }) {
-  return (
-    <div>
-      <Play active={true} data={data} />
-    </div>
-  );
+  return <Play active={true} data={data} />;
 }
 
 export async function getServerSideProps(context) {

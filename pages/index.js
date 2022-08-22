@@ -12,9 +12,9 @@ export async function getServerSideProps(context) {
 
     // db.collection('trays').deleteMany({});
 
-    const raw = await db.collection('trays').find({}).toArray();
+    const response = await db.collection('trays').find({}).toArray();
 
-    const data = await JSON.parse(JSON.stringify(raw));
+    const data = JSON.parse(JSON.stringify(response));
 
     return {
       props: { isConnected: true, data }
