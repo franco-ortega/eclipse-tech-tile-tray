@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
-import Button from './Button';
+import { clearLocalStorage } from '../../utils/localStorage';
 import ButtonContainer from './ButtonContainer';
-import styles from './ButtonContainer.module.css';
+import Button from './Button';
 
 const EndGameButton = () => {
   const router = useRouter();
 
   const onEndButtonClick = () => {
+    clearLocalStorage();
     router.push('/');
   };
 
