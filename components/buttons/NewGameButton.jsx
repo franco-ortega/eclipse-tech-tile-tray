@@ -10,13 +10,14 @@ const NewGameButton = ({ length }) => {
   const { setActiveTrayId } = useTrayContext();
   const router = useRouter();
 
+  const text = 'New Game';
+
   const onNewGameClick = async () => {
     const id = await postData('/api/trays', {
       ...trayData,
       name: `Game #${length + 1}`,
       date: new Date()
     }).then((res) => {
-      console.log(res);
       setActiveTrayId(res.insertedId);
       setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
       return res.insertedId;
@@ -24,8 +25,6 @@ const NewGameButton = ({ length }) => {
 
     router.push(`/new-game/${id}`);
   };
-
-  const text = 'New Game';
 
   return (
     <ButtonContainer>
