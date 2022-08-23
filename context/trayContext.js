@@ -7,8 +7,8 @@ export const TrayProvider = ({ children }) => {
   const [activeTrayId, setActiveTrayId] = useState('');
   const [tray, setTray] = useState(null);
 
-  console.log('CONTEXT tray: ', tray);
-  console.log('CONTEXT id: ', activeTrayId);
+  // console.log('CONTEXT tray: ', tray);
+  // console.log('CONTEXT id: ', activeTrayId);
 
   useEffect(() => {
     if (!activeTrayId) {
