@@ -6,7 +6,7 @@ import EndGameButton from '../buttons/EndGameButton';
 import styles from './Play.module.css';
 
 const Play = ({ active, data }) => {
-  const { tray, setTray, activeTrayId } = useTrayContext();
+  const { tray, setTray } = useTrayContext();
 
   useEffect(async () => {
     await setTray(data);
@@ -19,7 +19,7 @@ const Play = ({ active, data }) => {
       <p>Click on a tile to purchase it.</p>
       {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
       <div data-buttons='next-and-end'>
-        <NextRoundButton id={activeTrayId} />
+        <NextRoundButton />
         <EndGameButton />
       </div>
     </div>
