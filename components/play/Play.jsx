@@ -10,7 +10,7 @@ const Play = ({ active, data }) => {
 
   useEffect(async () => {
     await setTray(data);
-    await setActiveTrayId(data._id);
+    // await setActiveTrayId(data._id);
   }, []);
 
   return (
