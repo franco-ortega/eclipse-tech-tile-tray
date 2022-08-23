@@ -6,11 +6,10 @@ import EndGameButton from '../buttons/EndGameButton';
 import styles from './Play.module.css';
 
 const Play = ({ active, data }) => {
-  const { tray, setTray, activeTrayId, setActiveTrayId } = useTrayContext();
+  const { tray, setTray, activeTrayId } = useTrayContext();
 
   useEffect(async () => {
     await setTray(data);
-    // await setActiveTrayId(data._id);
   }, []);
 
   return (

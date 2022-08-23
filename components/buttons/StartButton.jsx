@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
-import Button from './Button';
 import ButtonContainer from './ButtonContainer';
+import Button from './Button';
 
 const StartButton = () => {
   const router = useRouter();
-  console.log(router);
 
   const text = router.route.includes('new-game') ? 'Start Game' : 'Start Round';
 
