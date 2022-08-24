@@ -1,5 +1,9 @@
 import { useTrayContext } from '../../context/trayContext';
 import { putData } from '../../services/request';
+import {
+  availableTiles,
+  availableSortedTiles
+} from '../../utils/filterAndSort';
 import { updatePosition } from '../../utils/updatePosition';
 import styles from './Tile.module.css';
 
@@ -17,9 +21,13 @@ const Tile = ({ active, category, color, tile }) => {
           }
         };
 
-        await putData(`/api/trays?id=${tray._id}`, usedUpdate).then((res) =>
-          setTray(res)
-        );
+        await putData(`/api/trays?id=${tray._id}`, usedUpdate).then((res) => {
+          res.rows.military.tiles = availableTiles(res.rows.military.tiles);
+          res.rows.grid.tiles = availableTiles(res.rows.grid.tiles);
+          res.rows.nano.tiles = availableTiles(res.rows.nano.tiles);
+          res.rows.rare.tiles = availableSortedTiles(res.rows.rare.tiles);
+          setTray(res);
+        });
       }
     : async () => {
         const selectedKey = `rows.${category}.tiles.$[element].selected`;

@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router';
-import Button from './Button';
 import ButtonContainer from './ButtonContainer';
-import styles from './ButtonContainer.module.css';
+import Button from './Button';
 
 const NextRoundButton = () => {
   const router = useRouter();
 
   const onNewRoundClick = () => {
-    router.push('/new-round');
+    router.push(`/new-round/${router.query.id}`);
   };
 
   const text = 'Next Round';

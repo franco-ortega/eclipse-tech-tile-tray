@@ -1,21 +1,15 @@
 import { useEffect } from 'react';
 import { useTrayContext } from '../../context/trayContext';
-import { getData } from '../../services/request';
-import { verifyTrayId } from '../../utils/verifyTrayId';
-import EndGameButton from '../buttons/EndGameButton';
-import NextRoundButton from '../buttons/NextRoundButton';
 import Tray from '../tray/Tray';
+import NextRoundButton from '../buttons/NextRoundButton';
+import EndGameButton from '../buttons/EndGameButton';
 import styles from './Play.module.css';
 
-const Play = ({ active }) => {
-  const { tray, setTray, activeTrayId, setActiveTrayId } = useTrayContext();
+const Play = ({ active, data }) => {
+  const { tray, setTray } = useTrayContext();
 
   useEffect(async () => {
-    const id = verifyTrayId(activeTrayId);
-
-    if (!activeTrayId.length) setActiveTrayId(id);
-
-    await getData(`/api/trays/?id=${id}`).then((res) => setTray(res));
+    await setTray(data);
   }, []);
 
   return (

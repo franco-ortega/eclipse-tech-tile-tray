@@ -1,8 +1,8 @@
-import clientPromise from '../lib/mongodb';
-import Home from '../components/home/Home';
+import clientPromise from '../../lib/mongodb';
+import Fallback from '../../components/fallback/Fallback';
 
-export default function HomePage({ data }) {
-  return <Home data={data} />;
+export default function PlayGameFallBack({ data }) {
+  return <Fallback data={data} />;
 }
 
 export async function getServerSideProps(context) {
@@ -10,11 +10,10 @@ export async function getServerSideProps(context) {
     const client = await clientPromise;
     const db = client.db('eclipseDB');
 
-    // db.collection('trays').deleteMany({});
-
     const response = await db.collection('trays').find({}).toArray();
 
     const data = JSON.parse(JSON.stringify(response));
+    console.log(data);
 
     return {
       props: { isConnected: true, data }

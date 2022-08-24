@@ -1,21 +1,12 @@
-import { useEffect, useState } from 'react';
-import { getData } from '../../services/request';
 import NewGameButton from '../buttons/NewGameButton';
 import TrayList from '../trayList/TrayList';
 import styles from './Home.module.css';
 
-const Home = () => {
-  const [trays, setTrays] = useState([]);
-
-  useEffect(async () => {
-    const response = await getData('/api/trays');
-    await setTrays(response);
-  }, []);
-
+const Home = ({ data }) => {
   return (
     <div className={styles.Home}>
-      <NewGameButton length={trays.length} />
-      <TrayList trays={trays} />
+      <NewGameButton length={data.length} />
+      <TrayList data={data} />
     </div>
   );
 };
