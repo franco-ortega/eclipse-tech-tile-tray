@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 import { useTrayContext } from '../../context/trayContext';
 import Tray from '../tray/Tray';
-import StartRoundButton from '../buttons/StartRoundButton';
+import StartButton from '../buttons/StartButton';
 import styles from './SelectTiles.module.css';
 
 const SelectTiles = ({ active, data }) => {
-  const { tray, setTray, activeTrayId, setActiveTrayId } = useTrayContext();
+  const { tray, setTray } = useTrayContext();
 
   useEffect(async () => {
     setTray(data);
-    setActiveTrayId(data._id);
   }, []);
 
   return (
@@ -18,7 +17,7 @@ const SelectTiles = ({ active, data }) => {
       <p>Click on tiles to add them to your tray.</p>
       {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
       <div data-buttons='start'>
-        <StartRoundButton id={activeTrayId} />
+        <StartButton />
       </div>
     </div>
   );

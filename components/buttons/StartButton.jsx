@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
-import Button from './Button';
 import ButtonContainer from './ButtonContainer';
+import Button from './Button';
 
-const StartRoundButton = ({ id }) => {
+const StartButton = () => {
   const router = useRouter();
 
-  const onStartRoundClick = () => {
-    router.push(`/play-game/${id}`);
-  };
+  const text = router.route.includes('new-game') ? 'Start Game' : 'Start Round';
 
-  const text = 'Start Round';
+  const onStartRoundClick = () => {
+    router.push(`/play-game/${router.query.id}`);
+  };
 
   return (
     <ButtonContainer>
@@ -18,4 +18,4 @@ const StartRoundButton = ({ id }) => {
   );
 };
 
-export default StartRoundButton;
+export default StartButton;

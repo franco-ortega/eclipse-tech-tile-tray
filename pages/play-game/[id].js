@@ -7,11 +7,7 @@ import {
 } from '../../utils/filterAndSort';
 
 export default function PlayGame({ data }) {
-  return (
-    <div>
-      <Play active={true} data={data} />
-    </div>
-  );
+  return <Play active={true} data={data} />;
 }
 
 export async function getServerSideProps(context) {
@@ -24,18 +20,6 @@ export async function getServerSideProps(context) {
       .findOne({ _id: ObjectId(context.params.id) });
 
     const data = await JSON.parse(JSON.stringify(raw));
-
-    data.rows.military.tiles = data.rows.military.tiles.filter(
-      (tile) => tile.position && tile.selected - tile.used
-    );
-
-    data.rows.grid.tiles = data.rows.grid.tiles.filter(
-      (tile) => tile.position && tile.selected - tile.used
-    );
-
-    data.rows.nano.tiles = data.rows.nano.tiles.filter(
-      (tile) => tile.position && tile.selected - tile.used
-    );
 
     data.rows.military.tiles = availableTiles(data.rows.military.tiles);
     data.rows.grid.tiles = availableTiles(data.rows.grid.tiles);
