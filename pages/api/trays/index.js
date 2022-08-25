@@ -1,12 +1,9 @@
-import { ObjectId } from 'mongodb';
 import clientPromise from '../../../lib/mongodb';
 
 export default async function handler(req, res) {
   const client = await clientPromise;
 
   const db = client.db('eclipseDB');
-
-  // db.collection('trays').deleteMany({});
 
   switch (req.method) {
     case 'GET':
