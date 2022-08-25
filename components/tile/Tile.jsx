@@ -21,7 +21,7 @@ const Tile = ({ active, category, color, tile }) => {
           }
         };
 
-        await putData(`/api/trays?id=${tray._id}`, usedUpdate).then((res) => {
+        await putData(`/api/trays/${tray._id}`, usedUpdate).then((res) => {
           res.rows.military.tiles = availableTiles(res.rows.military.tiles);
           res.rows.grid.tiles = availableTiles(res.rows.grid.tiles);
           res.rows.nano.tiles = availableTiles(res.rows.nano.tiles);
