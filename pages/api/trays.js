@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'GET':
-      console.log('GET by id route');
+      console.log('GET by id OG route');
       if (req.query.id) {
         // get one tray if the query has an id
         const query = { _id: ObjectId(req.query.id) };
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         const data = await JSON.parse(JSON.stringify(raw));
         res.json(data);
       } else if (!req.body) {
-        console.log('GET route');
+        console.log('GET OG route');
         // get all trays if the body is empty
         const raw = await db.collection('trays').find({}).toArray();
         const data = await JSON.parse(JSON.stringify(raw));
@@ -26,12 +26,12 @@ export default async function handler(req, res) {
       }
       break;
     case 'POST':
-      console.log('POST route');
+      console.log('POST OG route');
       const response = await db.collection('trays').insertOne(req.body);
       res.json(response);
       break;
     case 'PUT':
-      console.log('PUT route');
+      console.log('PUT OG route');
       const update = await db.collection('trays').findOneAndUpdate(
         { _id: ObjectId(req.query.id) },
         { $set: req.body.update },

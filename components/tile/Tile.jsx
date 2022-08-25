@@ -49,7 +49,7 @@ const Tile = ({ active, category, color, tile }) => {
               }
         };
 
-        await putData(`/api/trays?id=${tray._id}`, selectedUpdate).then((res) =>
+        await putData(`/api/trays/${tray._id}`, selectedUpdate).then((res) =>
           setTray(res)
         );
       };

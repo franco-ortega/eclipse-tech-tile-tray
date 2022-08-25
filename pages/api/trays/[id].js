@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       break;
 
     case 'PUT':
-      console.log('PUT [id] route');
+      console.log('PUT NEW [id] route');
       const update = await db.collection('trays').findOneAndUpdate(
         { _id: ObjectId(req.query.id) },
         { $set: req.body.update },
