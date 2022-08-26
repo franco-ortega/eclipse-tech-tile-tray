@@ -13,12 +13,18 @@ const Tile = ({ active, category, color, tile }) => {
   const onTileClick = active
     ? async () => {
         const usedKey = `rows.${category}.tiles.$[element].used`;
+        const positionKey = `rows.${category}.tiles.$[element].position`;
 
         const usedUpdate = {
           tile,
-          update: {
-            [usedKey]: tile.used + 1
-          }
+          update: !(category === 'rare')
+            ? {
+                [usedKey]: tile.used + 1
+              }
+            : {
+                [usedKey]: tile.used + 1,
+                [positionKey]: null
+              }
         };
 
         await putData(`/api/trays/${tray._id}`, usedUpdate).then((res) => {

@@ -9,7 +9,7 @@ const Row = ({ active, tech }) => {
   }
 
   const findTile = (position, tiles) => {
-    if (tech.category === 'rare') return tiles[position - 1];
+    if (!active && tech.category === 'rare') return tiles[position - 1];
     return tiles.find((tile) => tile.position === position);
   };
 
