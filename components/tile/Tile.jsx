@@ -40,8 +40,7 @@ const Tile = ({ active, category, color, tile }) => {
         const positionKey = `rows.${category}.tiles.$[element].position`;
 
         const originalPosition = tile.position ? tile.position : null;
-        const tiles = tray.rows.rare.tiles;
-        const newPosition = updatePosition(originalPosition, tiles);
+        const rareTiles = tray.rows.rare.tiles;
 
         const selectedUpdate = {
           tile,
@@ -51,7 +50,8 @@ const Tile = ({ active, category, color, tile }) => {
               }
             : {
                 [selectedKey]: tile.selected + 1,
-                [positionKey]: newPosition
+                [positionKey]: updatePosition(rareTiles)
+                // [positionKey]: newPosition
               }
         };
 
