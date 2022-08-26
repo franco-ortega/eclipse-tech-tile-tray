@@ -14,7 +14,7 @@ const TrayList = ({ data }) => {
       return;
     }
 
-    const response = await getData(`/api/tray/${e.target.value}`);
+    const response = await getData(`/api/trays/${e.target.value}`);
 
     const proceedToGame = confirm(
       `You have selected ${response.name}. Click OK to proceed.`
