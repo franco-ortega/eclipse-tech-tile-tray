@@ -7,6 +7,9 @@ export const updatePosition = (tiles) => {
   console.log(currentTiles);
 
   const foundTile = currentTiles.find((tile, i) => {
+    console.log('POSITION / INDEX', tile.position, i);
+    console.log('TILE', tile);
+
     if (tile.position > 1 && i === 0) {
       firstOpenPosition = 1;
       return tile;
@@ -17,6 +20,9 @@ export const updatePosition = (tiles) => {
       return tile;
     }
   });
+
+  console.log('1st Open: ', firstOpenPosition);
+  console.log('FOUND: ', foundTile);
 
   return firstOpenPosition;
 };
