@@ -1,28 +1,20 @@
 import { availableSortedTiles } from './filterAndSort';
 
 export const updatePosition = (tiles) => {
-  let firstOpenPosition = 1;
-
   const currentTiles = availableSortedTiles(tiles);
-  console.log(currentTiles);
 
-  const foundTile = currentTiles.find((tile, i) => {
-    console.log('POSITION / INDEX', tile.position, i);
-    console.log('TILE', tile);
+  if (!currentTiles.length) return 1;
 
-    if (tile.position > 1 && i === 0) {
-      firstOpenPosition = 1;
-      return tile;
-    }
+  const firstEmptyPosition = currentTiles.reduce((prev, current, i) => {
+    const nextPosition = current.position + 1;
+    const positionOfNextTile = currentTiles[i + 1]?.position;
 
-    if (tile.position + 1 !== currentTiles[i + 1]?.position) {
-      firstOpenPosition = tile.position === null ? 1 : tile.position + 1;
-      return tile;
-    }
-  });
+    if (prev) return prev;
+    if (current.position > i + 1) return i + 1;
+    if (nextPosition !== positionOfNextTile) return nextPosition;
 
-  console.log('1st Open: ', firstOpenPosition);
-  console.log('FOUND: ', foundTile);
+    return prev;
+  }, null);
 
-  return firstOpenPosition;
+  return firstEmptyPosition;
 };
