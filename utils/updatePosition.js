@@ -1,12 +1,20 @@
-export const updatePosition = (position, tiles) => {
-  if (!position) {
-    const totalPositions = tiles.reduce((accumulated, current) => {
-      if (current.position) accumulated += 1;
-      return accumulated;
-    }, 0);
+import { availableSortedTiles } from './filterAndSort';
 
-    return totalPositions + 1;
-  }
+export const updatePosition = (tiles) => {
+  const currentTiles = availableSortedTiles(tiles);
 
-  return position;
+  if (!currentTiles.length) return 1;
+
+  const firstEmptyPosition = currentTiles.reduce((prev, current, i) => {
+    const nextPosition = current.position + 1;
+    const positionOfNextTile = currentTiles[i + 1]?.position;
+
+    if (prev) return prev;
+    if (current.position > i + 1) return i + 1;
+    if (nextPosition !== positionOfNextTile) return nextPosition;
+
+    return prev;
+  }, null);
+
+  return firstEmptyPosition;
 };
