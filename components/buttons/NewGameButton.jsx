@@ -15,7 +15,17 @@ const NewGameButton = ({ length }) => {
   const onNewGameClick = async () => {
     let trayTitle = `Game #${length + 1}`;
 
-    trayTitle = prompt('What would you like to name your tray?', trayTitle);
+    trayTitle = prompt(
+      'What would you like to name your tray? \n (12 characters max)',
+      trayTitle
+    );
+
+    do {
+      if (trayTitle.length > 12)
+        alert('Please limit your title to a maximum of 12 characters.');
+      trayTitle = prompt('What would you like to name your tray?', trayTitle);
+    } while (trayTitle.length > 12);
+
     console.log(trayTitle);
 
     const id = await postData('/api/trays', {
