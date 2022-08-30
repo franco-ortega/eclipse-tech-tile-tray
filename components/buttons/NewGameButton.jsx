@@ -5,6 +5,7 @@ import { setLocalStorage } from '../../utils/localStorage';
 import trayData from '../../data/tray.json';
 import ButtonContainer from './ButtonContainer';
 import Button from './Button';
+import { customizeTitle } from '../../utils/customizeTitle';
 
 const NewGameButton = ({ length }) => {
   const { setActiveTrayId } = useTrayContext();
@@ -14,34 +15,7 @@ const NewGameButton = ({ length }) => {
 
   const onNewGameClick = async () => {
     const defaultTitle = `Game #${length + 1}`;
-    let customTitle = defaultTitle;
-
-    do {
-      if (customTitle.length > 12) {
-        customTitle = defaultTitle;
-        customTitle = prompt(
-          'Please limit your title to a maximum of 12 characters.',
-          customTitle
-        );
-      } else if (customTitle.length === 0) {
-        customTitle = defaultTitle;
-        customTitle = prompt(
-          'Please enter a title (12 characters max).',
-          customTitle
-        );
-      } else
-        customTitle = prompt(
-          'What would you like to name your game? \n (12 characters max)',
-          customTitle
-        );
-
-      if (customTitle?.length) {
-        customTitle = customTitle
-          .split(' ')
-          .filter((word) => word.replace(' ', '').length)
-          .join(' ');
-      }
-    } while (customTitle?.length === 0 || customTitle?.length > 12);
+    const customTitle = customizeTitle(defaultTitle);
 
     if (customTitle) {
       const id = await postData('/api/trays', {
