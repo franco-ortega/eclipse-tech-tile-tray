@@ -1,3 +1,12 @@
+const removeExtraSpaces = (title) => {
+  const cleanTitle = title
+    .split(' ')
+    .filter((word) => word.replace(' ', '').length)
+    .join(' ');
+
+  return cleanTitle;
+};
+
 export const customizeTitle = (originalTitle) => {
   let finalTitle = originalTitle;
 
@@ -20,12 +29,7 @@ export const customizeTitle = (originalTitle) => {
         finalTitle
       );
 
-    if (finalTitle?.length) {
-      finalTitle = finalTitle
-        .split(' ')
-        .filter((word) => word.replace(' ', '').length)
-        .join(' ');
-    }
+    if (finalTitle?.length) finalTitle = removeExtraSpaces(finalTitle);
   } while (finalTitle?.length === 0 || finalTitle?.length > 12);
 
   return finalTitle;
