@@ -34,6 +34,13 @@ const NewGameButton = ({ length }) => {
           'What would you like to name your game? \n (12 characters max)',
           customTitle
         );
+
+      if (customTitle?.length) {
+        customTitle = customTitle
+          .split(' ')
+          .filter((word) => word.replace(' ', '').length)
+          .join(' ');
+      }
     } while (customTitle?.length === 0 || customTitle?.length > 12);
 
     if (customTitle) {
