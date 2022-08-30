@@ -31,7 +31,7 @@ const NewGameButton = ({ length }) => {
         );
       } else
         customTitle = prompt(
-          'What would you like to name your tray? \n (12 characters max)',
+          'What would you like to name your game? \n (12 characters max)',
           customTitle
         );
     } while (customTitle?.length === 0 || customTitle?.length > 12);
