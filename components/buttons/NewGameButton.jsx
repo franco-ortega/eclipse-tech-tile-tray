@@ -5,6 +5,7 @@ import { setLocalStorage } from '../../utils/localStorage';
 import trayData from '../../data/tray.json';
 import ButtonContainer from './ButtonContainer';
 import Button from './Button';
+import { customizeTitle } from '../../utils/customizeTitle';
 
 const NewGameButton = ({ length }) => {
   const { setActiveTrayId } = useTrayContext();
@@ -13,17 +14,22 @@ const NewGameButton = ({ length }) => {
   const text = 'New Game';
 
   const onNewGameClick = async () => {
-    const id = await postData('/api/trays', {
-      ...trayData,
-      name: `Game #${length + 1}`,
-      date: new Date()
-    }).then((res) => {
-      setActiveTrayId(res.insertedId);
-      setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
-      return res.insertedId;
-    });
+    const defaultTitle = `Game #${length + 1}`;
+    const customTitle = customizeTitle(defaultTitle);
 
-    router.push(`/new-game/${id}`);
+    if (customTitle) {
+      const id = await postData('/api/trays', {
+        ...trayData,
+        name: customTitle,
+        date: new Date()
+      }).then((res) => {
+        setActiveTrayId(res.insertedId);
+        setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
+        return res.insertedId;
+      });
+
+      router.push(`/new-game/${id}`);
+    }
   };
 
   return (
