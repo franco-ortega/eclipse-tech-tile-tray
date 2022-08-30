@@ -12,3 +12,9 @@ Server: MongoDB
 1. Create MongoDB database: **_eclipse-tech-tile-tray_**
    1. Create collection: **_trays_**
 1. Add Mongo URI string to **env.local** file
+
+### TO DO Notes
+
+1. Edit tray title
+2. Keep track of rounds
+3. End game after final round

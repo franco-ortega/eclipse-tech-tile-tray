@@ -13,9 +13,14 @@ const NewGameButton = ({ length }) => {
   const text = 'New Game';
 
   const onNewGameClick = async () => {
+    let trayTitle = `Game #${length + 1}`;
+
+    trayTitle = prompt('What would you like to name your tray?', trayTitle);
+    console.log(trayTitle);
+
     const id = await postData('/api/trays', {
       ...trayData,
-      name: `Game #${length + 1}`,
+      name: trayTitle,
       date: new Date()
     }).then((res) => {
       setActiveTrayId(res.insertedId);
