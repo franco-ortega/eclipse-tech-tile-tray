@@ -1,8 +1,14 @@
+import { useTrayContext } from '../../context/trayContext';
 import NewGameButton from '../buttons/NewGameButton';
+import Loading from '../loading/Loading';
 import TrayList from '../trayList/TrayList';
 import styles from './Home.module.css';
 
 const Home = ({ data }) => {
+  const { loading } = useTrayContext();
+
+  if (loading) return <Loading />;
+
   return (
     <div className={styles.Home}>
       <NewGameButton length={data.length} />

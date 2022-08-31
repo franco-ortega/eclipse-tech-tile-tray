@@ -3,13 +3,19 @@ import { useTrayContext } from '../../context/trayContext';
 import Tray from '../tray/Tray';
 import StartButton from '../buttons/StartButton';
 import styles from './SelectTiles.module.css';
+import Loading from '../loading/Loading';
 
 const SelectTiles = ({ active, data }) => {
-  const { tray, setTray } = useTrayContext();
+  const { tray, setTray, loading, setLoading } = useTrayContext();
 
   useEffect(async () => {
-    setTray(data);
+    if (data) {
+      setLoading(false);
+      setTray(data);
+    }
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className={styles.SelectTiles}>
