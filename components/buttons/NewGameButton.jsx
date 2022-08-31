@@ -8,7 +8,7 @@ import Button from './Button';
 import { customizeTitle } from '../../utils/customizeTitle';
 
 const NewGameButton = ({ length }) => {
-  const { setActiveTrayId } = useTrayContext();
+  const { setActiveTrayId, setLoading } = useTrayContext();
   const router = useRouter();
 
   const text = 'New Game';
@@ -18,17 +18,16 @@ const NewGameButton = ({ length }) => {
     const customTitle = customizeTitle(defaultTitle);
 
     if (customTitle) {
-      const id = await postData('/api/trays', {
+      setLoading(true);
+      await postData('/api/trays', {
         ...trayData,
         name: customTitle,
         date: new Date()
       }).then((res) => {
         setActiveTrayId(res.insertedId);
         setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
-        return res.insertedId;
+        router.push(`/new-game/${res.insertedId}`);
       });
-
-      router.push(`/new-game/${id}`);
     }
   };
 
