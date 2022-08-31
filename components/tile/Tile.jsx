@@ -29,12 +29,15 @@ const Tile = ({ active, category, color, tile }) => {
               }
         };
 
+        setLoadingTile(true);
+
         await putData(`/api/trays/${tray._id}`, usedUpdate).then((res) => {
           res.rows.military.tiles = availableTiles(res.rows.military.tiles);
           res.rows.grid.tiles = availableTiles(res.rows.grid.tiles);
           res.rows.nano.tiles = availableTiles(res.rows.nano.tiles);
           res.rows.rare.tiles = availableSortedTiles(res.rows.rare.tiles);
           setTray(res);
+          setLoadingTile(false);
         });
       }
     : async () => {
@@ -57,6 +60,7 @@ const Tile = ({ active, category, color, tile }) => {
         };
 
         setLoadingTile(true);
+
         await putData(`/api/trays/${tray._id}`, selectedUpdate).then((res) =>
           setTray(res)
         );

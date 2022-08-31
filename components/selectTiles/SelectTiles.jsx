@@ -8,7 +8,7 @@ import Loading from '../loading/Loading';
 const SelectTiles = ({ active, data }) => {
   const { tray, setTray, loading, setLoading } = useTrayContext();
 
-  useEffect(async () => {
+  useEffect(() => {
     if (data) {
       setLoading(false);
       setTray(data);
