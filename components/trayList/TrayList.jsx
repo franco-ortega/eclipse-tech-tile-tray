@@ -5,7 +5,7 @@ import { setLocalStorage } from '../../utils/localStorage';
 import styles from './TrayList.module.css';
 
 const TrayList = ({ data }) => {
-  const { setActiveTrayId } = useTrayContext();
+  const { setActiveTrayId, setLoading } = useTrayContext();
   const router = useRouter();
 
   const onSelectGame = async (e) => {
@@ -23,6 +23,7 @@ const TrayList = ({ data }) => {
     if (proceedToGame) {
       setActiveTrayId(response._id);
       setLocalStorage('ACTIVE_TRAY_ID', response._id);
+      setLoading(true);
       router.push(`/play-game/${response._id}`);
     } else alert('Please select another game.');
   };

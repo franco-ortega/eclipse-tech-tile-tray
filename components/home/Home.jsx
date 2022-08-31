@@ -10,7 +10,7 @@ const Home = ({ data }) => {
 
   useEffect(() => {
     if (data) setLoading(false);
-  });
+  }, []);
 
   if (loading) return <Loading />;
 

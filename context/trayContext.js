@@ -8,6 +8,8 @@ export const TrayProvider = ({ children }) => {
   const [tray, setTray] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  console.log({ loading });
+
   useEffect(() => {
     if (!activeTrayId) {
       const id = getLocalStorage('ACTIVE_TRAY_ID');
