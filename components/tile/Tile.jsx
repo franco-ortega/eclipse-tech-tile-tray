@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTrayContext } from '../../context/trayContext';
 import { putData } from '../../services/request';
 import {
@@ -9,6 +10,7 @@ import styles from './Tile.module.css';
 
 const Tile = ({ active, category, color, tile }) => {
   const { tray, setTray } = useTrayContext();
+  const [loadingTile, setLoadingTile] = useState(false);
 
   const onTileClick = active
     ? async () => {
@@ -54,9 +56,11 @@ const Tile = ({ active, category, color, tile }) => {
               }
         };
 
+        setLoadingTile(true);
         await putData(`/api/trays/${tray._id}`, selectedUpdate).then((res) =>
           setTray(res)
         );
+        setLoadingTile(false);
       };
 
   return (
@@ -68,7 +72,9 @@ const Tile = ({ active, category, color, tile }) => {
     >
       <div>{tile.title}</div>
       <span>
-        {!active
+        {loadingTile
+          ? 'Updating...'
+          : !active
           ? `x${tile.limit - tile.selected}`
           : `x${tile.selected - tile.used}`}
       </span>
