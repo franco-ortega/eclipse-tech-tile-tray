@@ -6,9 +6,9 @@ const TrayContext = createContext(null);
 export const TrayProvider = ({ children }) => {
   const [activeTrayId, setActiveTrayId] = useState('');
   const [tray, setTray] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // console.log('CONTEXT tray: ', tray);
-  // console.log('CONTEXT id: ', activeTrayId);
+  console.log({ loading });
 
   useEffect(() => {
     if (!activeTrayId) {
@@ -19,7 +19,14 @@ export const TrayProvider = ({ children }) => {
 
   return (
     <TrayContext.Provider
-      value={{ activeTrayId, setActiveTrayId, tray, setTray }}
+      value={{
+        activeTrayId,
+        setActiveTrayId,
+        tray,
+        setTray,
+        loading,
+        setLoading
+      }}
     >
       {children}
     </TrayContext.Provider>
@@ -27,8 +34,8 @@ export const TrayProvider = ({ children }) => {
 };
 
 export const useTrayContext = () => {
-  const { activeTrayId, setActiveTrayId, tray, setTray } =
+  const { activeTrayId, setActiveTrayId, tray, setTray, loading, setLoading } =
     useContext(TrayContext);
 
-  return { activeTrayId, setActiveTrayId, tray, setTray };
+  return { activeTrayId, setActiveTrayId, tray, setTray, loading, setLoading };
 };
