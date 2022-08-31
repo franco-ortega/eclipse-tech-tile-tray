@@ -10,8 +10,8 @@ const SelectTiles = ({ active, data }) => {
 
   useEffect(() => {
     if (data) {
-      setLoading(false);
       setTray(data);
+      setLoading(false);
     }
   }, []);
 
