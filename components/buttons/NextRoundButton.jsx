@@ -5,10 +5,11 @@ import { useTrayContext } from '../../context/trayContext';
 
 const NextRoundButton = () => {
   const router = useRouter();
-  const { setLoading } = useTrayContext();
+  const { setLoading, incrementRound } = useTrayContext();
 
   const onNewRoundClick = () => {
     setLoading(true);
+    if (!router.route.includes('new-game')) incrementRound();
     router.push(`/new-round/${router.query.id}`);
   };
 

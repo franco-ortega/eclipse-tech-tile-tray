@@ -20,6 +20,7 @@ const SelectTiles = ({ active, data }) => {
   return (
     <div className={styles.SelectTiles}>
       <h3>{tray && tray.name}</h3>
+      <h4>{tray && `Select tiles for Round ${tray.round}`}</h4>
       <p>Click on tiles to add them to your tray.</p>
       {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
       <div data-buttons='start'>
