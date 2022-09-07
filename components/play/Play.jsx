@@ -21,11 +21,15 @@ const Play = ({ active, data }) => {
   return (
     <div className={styles.Play}>
       <h2>Play Game</h2>
-      <h3>{tray && tray.name}</h3>
-      <p>Click on a tile to purchase it.</p>
-      {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
+      {tray && (
+        <>
+          <h3>{tray.name}</h3>
+          <h4>Round {tray.round}</h4>
+          <Tray active={active} name={tray.name} rows={tray.rows} />
+        </>
+      )}
       <div data-buttons='next-and-end'>
-        <NextRoundButton />
+        {tray && tray.round < 8 && <NextRoundButton />}
         <EndGameButton />
       </div>
     </div>
