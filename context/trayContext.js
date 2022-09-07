@@ -7,14 +7,15 @@ export const TrayProvider = ({ children }) => {
   const [activeTrayId, setActiveTrayId] = useState('');
   const [tray, setTray] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [round, setRound] = useState(1);
+  const [round, setRound] = useState(null);
 
   useEffect(() => {
     if (!activeTrayId) {
       const id = getLocalStorage('ACTIVE_TRAY_ID');
       setActiveTrayId(id);
     }
-  }, []);
+    if (tray) setRound(tray.round);
+  }, [tray]);
 
   const incrementRound = () => {
     setRound((prevState) => prevState + 1);
