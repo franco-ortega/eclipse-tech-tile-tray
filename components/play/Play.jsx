@@ -22,6 +22,7 @@ const Play = ({ active, data }) => {
     <div className={styles.Play}>
       <h2>Play Game</h2>
       <h3>{tray && tray.name}</h3>
+      <h4>Round {tray && tray.round}</h4>
       <p>Click on a tile to purchase it.</p>
       {tray && <Tray active={active} name={tray.name} rows={tray.rows} />}
       <div data-buttons='next-and-end'>
