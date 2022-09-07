@@ -5,12 +5,15 @@ import { useTrayContext } from '../../context/trayContext';
 
 const StartButton = () => {
   const router = useRouter();
-  const { setLoading } = useTrayContext();
+  const { setLoading, round, incrementRound } = useTrayContext();
 
-  const text = router.route.includes('new-game') ? 'Start Game' : 'Start Round';
+  const text = router.route.includes('new-game')
+    ? 'Start Game'
+    : `Start Round ${round}`;
 
   const onStartRoundClick = () => {
     setLoading(true);
+    incrementRound();
     router.push(`/play-game/${router.query.id}`);
   };
 

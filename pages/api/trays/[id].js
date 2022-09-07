@@ -15,14 +15,22 @@ export default async function handler(req, res) {
       break;
 
     case 'PUT':
-      const update = await db.collection('trays').findOneAndUpdate(
-        { _id: ObjectId(req.query.id) },
-        { $set: req.body.update },
-        {
-          returnDocument: 'after',
-          arrayFilters: [{ element: req.body.tile }]
-        }
-      );
+      const update = req.body.tile
+        ? await db.collection('trays').findOneAndUpdate(
+            { _id: ObjectId(req.query.id) },
+            { $set: req.body.update },
+            {
+              returnDocument: 'after',
+              arrayFilters: [{ element: req.body.tile }]
+            }
+          )
+        : await db.collection('trays').findOneAndUpdate(
+            { _id: ObjectId(req.query.id) },
+            { $set: req.body.update },
+            {
+              returnDocument: 'after'
+            }
+          );
       res.json(update.value);
       break;
 

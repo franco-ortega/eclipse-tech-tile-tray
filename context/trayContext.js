@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { putData } from '../services/request';
 import { getLocalStorage } from '../utils/localStorage';
 
 const TrayContext = createContext(null);
@@ -17,9 +18,24 @@ export const TrayProvider = ({ children }) => {
     if (tray) setRound(tray.round);
   }, [tray]);
 
-  const incrementRound = () => {
+  const incrementRound = async () => {
     setRound((prevState) => prevState + 1);
+
+    const selectedKey = 'round';
+
+    const selectedUpdate = {
+      tray,
+      update: {
+        [selectedKey]: round + 1
+      }
+    };
+
+    await putData(`/api/trays/${tray._id}`, selectedUpdate).then((res) =>
+      setTray(res)
+    );
   };
+
+  console.log('ROUND: ', round);
 
   return (
     <TrayContext.Provider
