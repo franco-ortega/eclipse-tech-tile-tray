@@ -18,25 +18,14 @@ export const TrayProvider = ({ children }) => {
   }, [tray]);
 
   const incrementRound = async () => {
-    const selectedKey = 'round';
-
-    const selectedUpdate = {
-      tray,
-      update: {
-        [selectedKey]: tray.round + 1
-      }
+    const roundUpdate = {
+      update: { round: tray.round + 1 }
     };
 
-    const response = await putData(
-      `/api/trays/${tray._id}`,
-      selectedUpdate
-    ).then((res) => {
+    await putData(`/api/trays/${tray._id}`, roundUpdate).then((res) => {
       setTray(res);
       setRound(res.round);
-      console.log({ res });
     });
-
-    console.log({ response });
   };
 
   return (
