@@ -77,7 +77,7 @@ const Tile = ({ active, category, color, tile }) => {
       <div>{tile.title}</div>
       <span>
         {loadingTile
-          ? 'Updating...'
+          ? '...'
           : !active
           ? `x${tile.limit - tile.selected}`
           : `x${tile.selected - tile.used}`}
