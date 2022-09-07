@@ -16,6 +16,10 @@ export const TrayProvider = ({ children }) => {
     }
   }, []);
 
+  const incrementRound = () => {
+    setRound((prevState) => prevState + 1);
+  };
+
   return (
     <TrayContext.Provider
       value={{
@@ -26,7 +30,7 @@ export const TrayProvider = ({ children }) => {
         loading,
         setLoading,
         round,
-        setRound
+        incrementRound
       }}
     >
       {children}
@@ -43,7 +47,7 @@ export const useTrayContext = () => {
     loading,
     setLoading,
     round,
-    setRound
+    incrementRound
   } = useContext(TrayContext);
 
   return {
@@ -54,6 +58,6 @@ export const useTrayContext = () => {
     loading,
     setLoading,
     round,
-    setRound
+    incrementRound
   };
 };
