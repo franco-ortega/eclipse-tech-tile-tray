@@ -8,34 +8,36 @@ export const TrayProvider = ({ children }) => {
   const [activeTrayId, setActiveTrayId] = useState('');
   const [tray, setTray] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [round, setRound] = useState(null);
+  const [round, setRound] = useState(1);
 
   useEffect(() => {
     if (!activeTrayId) {
       const id = getLocalStorage('ACTIVE_TRAY_ID');
       setActiveTrayId(id);
     }
-    if (tray) setRound(tray.round);
   }, [tray]);
 
   const incrementRound = async () => {
-    setRound((prevState) => prevState + 1);
-
     const selectedKey = 'round';
 
     const selectedUpdate = {
       tray,
       update: {
-        [selectedKey]: round + 1
+        [selectedKey]: tray.round + 1
       }
     };
 
-    await putData(`/api/trays/${tray._id}`, selectedUpdate).then((res) =>
-      setTray(res)
-    );
-  };
+    const response = await putData(
+      `/api/trays/${tray._id}`,
+      selectedUpdate
+    ).then((res) => {
+      setTray(res);
+      setRound(res.round);
+      console.log({ res });
+    });
 
-  console.log('ROUND: ', round);
+    console.log({ response });
+  };
 
   return (
     <TrayContext.Provider

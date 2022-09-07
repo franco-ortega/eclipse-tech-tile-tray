@@ -7,7 +7,7 @@ import styles from './Play.module.css';
 import Loading from '../loading/Loading';
 
 const Play = ({ active, data }) => {
-  const { tray, setTray, loading, setLoading, round } = useTrayContext();
+  const { tray, setTray, loading, setLoading } = useTrayContext();
 
   useEffect(() => {
     if (data) {
@@ -24,7 +24,7 @@ const Play = ({ active, data }) => {
       {tray && (
         <>
           <h3>{tray.name}</h3>
-          <h4>Round {round}</h4>
+          <h4>Round {tray.round}</h4>
           <Tray active={active} name={tray.name} rows={tray.rows} />
         </>
       )}
