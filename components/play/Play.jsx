@@ -29,7 +29,7 @@ const Play = ({ active, data }) => {
         </>
       )}
       <div data-buttons='next-and-end'>
-        <NextRoundButton />
+        {tray && tray.round < 8 && <NextRoundButton />}
         <EndGameButton />
       </div>
     </div>
