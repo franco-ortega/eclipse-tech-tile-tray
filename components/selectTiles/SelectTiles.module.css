@@ -3,7 +3,8 @@
 }
 
 .SelectTiles h3,
-.SelectTiles h3 + p {
+.SelectTiles h4,
+.SelectTiles h4 + p {
   width: fit-content;
   margin-inline: auto;
   margin-bottom: 0.5rem;
