@@ -7,8 +7,7 @@ export const TrayProvider = ({ children }) => {
   const [activeTrayId, setActiveTrayId] = useState('');
   const [tray, setTray] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  console.log({ loading });
+  const [round, setRound] = useState(1);
 
   useEffect(() => {
     if (!activeTrayId) {
@@ -25,7 +24,9 @@ export const TrayProvider = ({ children }) => {
         tray,
         setTray,
         loading,
-        setLoading
+        setLoading,
+        round,
+        setRound
       }}
     >
       {children}
@@ -34,8 +35,25 @@ export const TrayProvider = ({ children }) => {
 };
 
 export const useTrayContext = () => {
-  const { activeTrayId, setActiveTrayId, tray, setTray, loading, setLoading } =
-    useContext(TrayContext);
+  const {
+    activeTrayId,
+    setActiveTrayId,
+    tray,
+    setTray,
+    loading,
+    setLoading,
+    round,
+    setRound
+  } = useContext(TrayContext);
 
-  return { activeTrayId, setActiveTrayId, tray, setTray, loading, setLoading };
+  return {
+    activeTrayId,
+    setActiveTrayId,
+    tray,
+    setTray,
+    loading,
+    setLoading,
+    round,
+    setRound
+  };
 };
