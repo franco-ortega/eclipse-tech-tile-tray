@@ -6,7 +6,6 @@ const TrayContext = createContext(null);
 export const TrayProvider = ({ children }) => {
   const [tray, setTray] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [round, setRound] = useState(1);
 
   const incrementRound = async () => {
     const roundUpdate = {
@@ -15,7 +14,6 @@ export const TrayProvider = ({ children }) => {
 
     await putData(`/api/trays/${tray._id}`, roundUpdate).then((res) => {
       setTray(res);
-      setRound(res.round);
     });
   };
 
@@ -26,7 +24,6 @@ export const TrayProvider = ({ children }) => {
         setTray,
         loading,
         setLoading,
-        round,
         incrementRound
       }}
     >
@@ -44,7 +41,6 @@ export const useTrayContext = () => {
     setTray,
     loading,
     setLoading,
-    round,
     incrementRound
   };
 };
