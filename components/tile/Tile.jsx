@@ -20,9 +20,7 @@ const Tile = ({ active, category, color, tile }) => {
         const usedUpdate = {
           tile,
           update: !(category === 'rare')
-            ? {
-                [usedKey]: tile.used + 1
-              }
+            ? { [usedKey]: tile.used + 1 }
             : {
                 [usedKey]: tile.used + 1,
                 [positionKey]: null
@@ -37,7 +35,7 @@ const Tile = ({ active, category, color, tile }) => {
           res.rows.nano.tiles = availableTiles(res.rows.nano.tiles);
           res.rows.rare.tiles = availableSortedTiles(res.rows.rare.tiles);
           setTray(res);
-          setLoadingTile(false);
+          if (tile.selected - tile.used - 1) setLoadingTile(false);
         });
       }
     : async () => {
@@ -77,7 +75,7 @@ const Tile = ({ active, category, color, tile }) => {
       <div>{tile.title}</div>
       <span>
         {loadingTile
-          ? 'Updating...'
+          ? '...'
           : !active
           ? `x${tile.limit - tile.selected}`
           : `x${tile.selected - tile.used}`}
