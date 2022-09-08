@@ -8,7 +8,7 @@ import Button from './Button';
 import { customizeTitle } from '../../utils/customizeTitle';
 
 const NewGameButton = ({ length }) => {
-  const { setActiveTrayId, setLoading } = useTrayContext();
+  const { setLoading } = useTrayContext();
   const router = useRouter();
 
   const text = 'New Game';
@@ -24,7 +24,6 @@ const NewGameButton = ({ length }) => {
         name: customTitle,
         date: new Date()
       }).then((res) => {
-        setActiveTrayId(res.insertedId);
         setLocalStorage('ACTIVE_TRAY_ID', res.insertedId);
         router.push(`/new-game/${res.insertedId}`);
       });
