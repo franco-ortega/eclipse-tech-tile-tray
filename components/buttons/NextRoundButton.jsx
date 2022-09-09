@@ -6,12 +6,7 @@ import { incrementRound } from '../../utils/incrementRound';
 
 const NextRoundButton = () => {
   const router = useRouter();
-  const {
-    tray,
-    setTray,
-    setLoading
-    // incrementRound
-  } = useTrayContext();
+  const { tray, setTray, setLoading } = useTrayContext();
 
   const onNewRoundClick = () => {
     setLoading(true);
