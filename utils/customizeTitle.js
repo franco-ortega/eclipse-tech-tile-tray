@@ -15,10 +15,10 @@ export const customizeTitle = (originalTitle) => {
   do {
     if (finalTitle.length > 12) {
       const text = 'Please limit your title to a maximum of 12 characters.';
-      finalTitle = titlePrompt(text, originalTitle);
+      finalTitle = titlePrompt(text, finalTitle);
     } else if (finalTitle.length === 0) {
       const text = 'Please enter a title (12 characters max).';
-      finalTitle = titlePrompt(text, originalTitle);
+      finalTitle = titlePrompt(text, finalTitle);
     } else {
       const text = 'What would you like to name your game? (12 characters max)';
       finalTitle = titlePrompt(text, originalTitle);
