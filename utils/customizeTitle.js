@@ -24,8 +24,9 @@ export const customizeTitle = (originalTitle) => {
       finalTitle = titlePrompt(text, originalTitle);
     }
 
-    if (finalTitle?.length) finalTitle = removeExtraSpaces(finalTitle);
-  } while (finalTitle?.length === 0 || finalTitle?.length > 12);
+    if (finalTitle === null) return finalTitle;
+    if (finalTitle.length) finalTitle = removeExtraSpaces(finalTitle);
+  } while (finalTitle.length === 0 || finalTitle.length > 12);
 
   return finalTitle;
 };
