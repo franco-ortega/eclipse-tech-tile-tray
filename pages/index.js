@@ -10,8 +10,6 @@ export async function getServerSideProps(context) {
     const client = await clientPromise;
     const db = client.db('eclipseDB');
 
-    // db.collection('trays').deleteMany({});
-
     const response = await db.collection('trays').find({}).toArray();
 
     const data = JSON.parse(JSON.stringify(response));
