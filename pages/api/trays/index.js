@@ -17,6 +17,11 @@ export default async function handler(req, res) {
       res.json(response);
       break;
 
+    case 'DELETE':
+      const deleted = db.collection('trays').deleteMany({});
+      res.json(deleted);
+      break;
+
     default:
       console.log('Method not available');
       return;
