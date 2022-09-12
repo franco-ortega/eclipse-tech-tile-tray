@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import { putData } from '../services/request';
 
 const TrayContext = createContext(null);
 
