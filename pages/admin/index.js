@@ -5,7 +5,7 @@ export default function AdminPage({ data }) {
   return <Admin data={data} />;
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   try {
     const client = await clientPromise;
     const db = client.db('eclipseDB');
