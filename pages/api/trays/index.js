@@ -13,8 +13,18 @@ export default async function handler(req, res) {
       break;
 
     case 'POST':
-      const response = await db.collection('trays').insertOne(req.body);
-      res.json(response);
+      const newTray = await db.collection('trays').insertOne(req.body);
+      res.json(newTray);
+      break;
+
+    case 'DELETE':
+      const deleted = await db.collection('trays').deleteMany({});
+      res.json({
+        success: deleted.acknowledged,
+        message: deleted.deletedCount
+          ? `All ${deleted.deletedCount} trays have been deleted`
+          : 'No trays to delete.'
+      });
       break;
 
     default:

@@ -1,0 +1,7 @@
+.Admin {
+  display: flex;
+  justify-content: center;
+  max-width: 40rem;
+  margin-inline: auto;
+  margin-top: 3rem;
+}

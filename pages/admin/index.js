@@ -1,11 +1,11 @@
-import clientPromise from '../lib/mongodb';
-import Home from '../components/home/Home';
+import Admin from '../../components/admin/Admin';
+import clientPromise from '../../lib/mongodb';
 
-export default function HomePage({ data }) {
-  return <Home data={data} />;
+export default function AdminPage({ data }) {
+  return <Admin data={data} />;
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   try {
     const client = await clientPromise;
     const db = client.db('eclipseDB');
