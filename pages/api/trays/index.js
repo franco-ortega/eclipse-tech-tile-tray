@@ -18,13 +18,20 @@ export default async function handler(req, res) {
       break;
 
     case 'DELETE':
-      const deleted = await db.collection('trays').deleteMany({});
-      res.json({
-        success: deleted.acknowledged,
-        message: deleted.deletedCount
-          ? `All ${deleted.deletedCount} trays have been deleted`
-          : 'No trays to delete.'
-      });
+      if (req.body.delete === 'G00dBye~') {
+        const deleted = await db.collection('trays').deleteMany({});
+        res.json({
+          success: deleted.acknowledged,
+          message: deleted.deletedCount
+            ? `All ${deleted.deletedCount} trays have been deleted`
+            : 'No trays to delete.'
+        });
+      } else {
+        res.json({
+          success: false,
+          message: 'Password incorrect.'
+        });
+      }
       break;
 
     default:
