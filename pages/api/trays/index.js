@@ -1,4 +1,5 @@
 import clientPromise from '../../../lib/mongodb';
+const { PASSWORD } = process.env;
 
 export default async function handler(req, res) {
   const client = await clientPromise;
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
 
     case 'DELETE':
       try {
-        if (req.body.delete === 'G00dBye~') {
+        if (req.body.delete === PASSWORD) {
           const deleted = await db.collection('trays').deleteMany({});
           res.json({
             success: deleted.acknowledged,
