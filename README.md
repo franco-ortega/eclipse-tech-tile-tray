@@ -15,7 +15,7 @@ Server: MongoDB
 
 ### TO DO Notes
 
-1. Edit tray title
-1. Add loading component(s)
-1. Keep track of rounds
-1. End game after final round
+1. Edit tray title - DONE
+1. Add loading component(s) - DONE
+1. Keep track of rounds - DONE
+1. End game after final round - DONE
