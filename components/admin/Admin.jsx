@@ -14,9 +14,9 @@ const Admin = ({ data }) => {
   }, []);
 
   const onDeleteDataClick = async () => {
-    console.log('...deleting data...');
-    await deleteData('/api/trays');
-    setTrays([]);
+    const password = prompt('Enter password.');
+    const response = await deleteData('/api/trays', { delete: password });
+    if (response.success) setTrays([]);
   };
 
   return (
